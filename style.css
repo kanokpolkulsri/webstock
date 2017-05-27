@@ -61,7 +61,7 @@
 .title-cate{
 	font-size: 30px;
 	text-align: center;
-	background-color: 
+	background-color:
 }
 
 .add{
@@ -135,4 +135,25 @@
   width: 100%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   display: table;
+}
+
+div.login {
+    text-align: center;
+}
+
+ul.login {
+    display: inline-block;
+    left: 100px;
+    width: auto;
+    list-style: none;
+    /*text-align: right;*/
+}
+
+.login li {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.login input {
+    display: inline-block;
 }

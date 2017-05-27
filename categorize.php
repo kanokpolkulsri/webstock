@@ -49,8 +49,8 @@
 		buttonadd.click(function(){
 			var link = './add_categorize.php';
 			$.get(link + '?project_name=' + inputadd.val(), function(data) {
-				if(data === "0") {
-					alert('failed');
+				if(data !== "success") {
+					alert(data);
 				}
 				get_project();
 			});

@@ -10,7 +10,7 @@
 	define('HOMEPAGE', '.');
 	// $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 	$db = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD);
-	if($db->connect_error) {
+	if($db->connect_error || DB_USERNAME == '' || DB_PASSWORD == '') {
 		header("Location: ".HOMEPAGE."/?login_failed=1");
 		die();
 	}

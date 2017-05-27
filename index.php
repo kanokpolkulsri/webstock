@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+   session_start();
+   session_unset();
+   session_destroy();
+?>
 <html>
     <head>
         <meta charset="utf-8">

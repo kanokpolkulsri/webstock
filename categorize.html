@@ -29,26 +29,35 @@
 <body>
 	<p class="title-cate">WELCOME</p>
 	<div class="add">
-		<input type="input" name="locate" class="input-value-add">
+		ProjName : <input type="input" name="locate" class="input-value-name-add" style="margin-right: 20px;">
+		ProjWBS : <input type="input" name="locate" class="input-value-wbs-add" style="margin-right: 20px;">
 		<button class="button-add"> + </button>
 	</div>
 	<div class="location"></div>
-	<div class="delete">
+	<!-- <div class="delete">
 		<button class="button-delete"> - </button>
 		<div class="name-delete">
 			<input type="input" name="locate" class="input-value-del">
 			<button class="btn-del">delete</button>
 		</div>
+	</div> -->
+	<div class="add-user">
+		
 	</div>
 
 
 	<script type="text/javascript">
 		var buttonadd = $('.button-add');
-		var buttondel = $('.button-delete');
-		var inputadd = $('.input-value-add');
-		var inputdel = $('.input-value-del');
+
+		var inputadd = $('.input-value-name-add');
+		var inputwbs = $('.input-value-wbs-add');
+
 		var locationadd = $('.location');
 		var location_empty = locationadd.html();
+		
+		//var inputdel = $('.input-value-del');
+		/*
+		var buttondel = $('.button-delete');
 		var checkClickButtonDel = false;
 		var divDel = $('.name-delete');
 		divDel.hide();
@@ -65,8 +74,12 @@
 		});
 
 		buttonConfirmDelete.click(function(){
-			// inputdel.val();
+			// inputdel.val(); 
+			//เอาค่าจากตรงนี้ไปเช็คว่าตรงกับชื่อดาต้าเบสที่ต้องการจะลบหรือไม่
 		});
+		*/
+
+
 
 		// function addlocation(input){
 		// 	locationadd.append('<a href="show.html"><button class="btn-location">'+input+'</button></a>');

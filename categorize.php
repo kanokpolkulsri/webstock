@@ -21,7 +21,7 @@
 <head>
 	<title></title>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="s.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -35,7 +35,7 @@
 	<div class="location"></div>
 	<div class="delete">
 		<button class="button-delete"> - </button>
-		<div class="name-delete"">
+		<div class="name-delete">
 			<input type="input" name="locate" class="input-value-del">
 			<button class="btn-del">delete</button>
 		</div>
@@ -74,7 +74,7 @@
 
 		buttonadd.click(function(){
 			var link = './add_categorize.php';
-			$.get(link + '?project_name=' + inputadd.val(), function(data) {
+			$.get(link + '?ProjWBS=' + inputadd.val() + '&ProjName', function(data) {
 				if(data !== "success") {
 					alert(data);
 				}
@@ -91,7 +91,7 @@
 				}
 				var projects = JSON.parse(data);
 				for(var i = 0; i < projects.length; i++) {
-					locationadd.append('<a href="show.html"><button class="btn-location">'+projects[i].substring('project_'.length)+'</button></a>');
+					locationadd.append('<a href="show.html"><button class="btn-location">'+projects[i].ProjName + ' (' + projects[i].ProjWBS.substring('project_')+')</button></a>');
 				}
 			});
 		}

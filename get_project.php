@@ -2,7 +2,6 @@
    session_start();
 	error_reporting(E_ERROR | E_PARSE);
 	date_default_timezone_set("Asia/Bangkok");
-	header('Content-Type: text/html; charset=utf-8');
    define('DB_SERVER', 'localhost');
    define('DB_USERNAME', $_SESSION['username']);
    define('DB_PASSWORD', $_SESSION['password']);
@@ -10,13 +9,13 @@
    // define('DB_PASSWORD', '1q2w3e4r');
    define('DB_DATABASE', 'projects');
    define('HOMEPAGE', '.');
-   // $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-   $db = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD, DB_DATABASE);
-
+   // $conn = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+   $conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD, DB_DATABASE);
+   mysqli_set_charset($conn, "utf8");
    $sql = 'SELECT * FROM project_map ORDER BY LastUpdate';
-   $result = $db->query($sql);
+   $result = $conn->query($sql);
 
-   // $result = $db->query("SHOW DATABASES;");
+   // $result = $conn->query("SHOW DATABASES;");
    if ($result->num_rows > 0) {
       $output = '[';
       while($row = $result->fetch_assoc()) {

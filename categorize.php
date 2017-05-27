@@ -14,6 +14,7 @@
 		header("Location: ".HOMEPAGE."/?login_failed=1");
 		die();
 	}
+   mysqli_set_charset($db, "utf8");
 	$_SESSION['username'] = DB_USERNAME;
 	$_SESSION['password'] = DB_PASSWORD;
 ?>
@@ -42,19 +43,19 @@
 		</div>
 	</div> -->
 	<div class="add-user">
-		
+
 	</div>
 
 
 	<script type="text/javascript">
 		var buttonadd = $('.button-add');
 
-		var inputadd = $('.input-value-name-add');
+		var inputname = $('.input-value-name-add');
 		var inputwbs = $('.input-value-wbs-add');
 
 		var locationadd = $('.location');
 		var location_empty = locationadd.html();
-		
+
 		//var inputdel = $('.input-value-del');
 		/*
 		var buttondel = $('.button-delete');
@@ -74,7 +75,7 @@
 		});
 
 		buttonConfirmDelete.click(function(){
-			// inputdel.val(); 
+			// inputdel.val();
 			//เอาค่าจากตรงนี้ไปเช็คว่าตรงกับชื่อดาต้าเบสที่ต้องการจะลบหรือไม่
 		});
 		*/
@@ -87,7 +88,7 @@
 
 		buttonadd.click(function(){
 			var link = './add_categorize.php';
-			$.get(link + '?ProjWBS=' + inputadd.val() + '&ProjName', function(data) {
+			$.get(link + '?ProjWBS=' + inputwbs.val() + '&ProjName=' + inputname.val(), function(data) {
 				if(data !== "success") {
 					alert(data);
 				}

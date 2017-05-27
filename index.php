@@ -7,7 +7,7 @@
     </head>
     <body>
         <div class="login">
-           <form class="" action="categorize.php" method="post">
+           <form class="" action="./categorize.php" method="post">
             <ul class='login'>
                     <li>Username: <input type='text' name='username'></li>
                     <li>Password: <input type='password' name='password'></li>

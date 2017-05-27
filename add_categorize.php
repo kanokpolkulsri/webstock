@@ -6,25 +6,18 @@
    define('DB_SERVER', 'localhost');
    define('DB_USERNAME', $_SESSION['username']);
    define('DB_PASSWORD', $_SESSION['password']);
-   define('DB_DATABASE', 'tmdseo4');
-   define('HOMEPAGE', 'http://localhost/webstock');
+   define('HOMEPAGE', '.');
    // $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-   $db = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+   $db = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD);
    if($db->connect_error) {
-      header("Location: ".HOMEPAGE."/?login_failed=1");
-      die();
+    //   header("Location: ".HOMEPAGE."/?login_failed=1");
+      die('connection error');
    }
-   try {
-      $sql = "CREATE DATABASE project_".$_GET['project_name'];
-      // echo $sql;
-      if ($db->query($sql) === TRUE) {
-          echo "success";
-      } else {
-          echo $db->error;
-      }
-
-   } catch (Exception $e) {
-      // echo 'Caught exception: ',  $e->getMessage(), "\n";
-      echo "error";
+   $sql = "CREATE DATABASE project_".$_GET['project_name'];
+   // echo $sql;
+   if ($db->query($sql) === TRUE) {
+      echo "success";
+   } else {
+      echo $db->error;
    }
 ?>

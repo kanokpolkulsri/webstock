@@ -7,10 +7,9 @@
 	define('DB_SERVER', 'localhost');
 	define('DB_USERNAME', $_POST['username']);
 	define('DB_PASSWORD', $_POST['password']);
-	define('DB_DATABASE', 'tmdseo4');
-	define('HOMEPAGE', 'http://localhost/webstock');
+	define('HOMEPAGE', '.');
 	// $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-	$db = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+	$db = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD);
 	if($db->connect_error) {
 		header("Location: ".HOMEPAGE."/?login_failed=1");
 		die();
@@ -38,28 +37,42 @@
 
 
 	<script type="text/javascript">
-		var homepage = 'http://localhost/webstock';
 		var buttonadd = $('.button-add');
 		var inputadd = $('.input-value-add');
 		var locationadd = $('.location');
+		var location_empty = locationadd.html();
 
 		// function addlocation(input){
 		// 	locationadd.append('<a href="show.html"><button class="btn-location">'+input+'</button></a>');
 		// }
 
 		buttonadd.click(function(){
-			// addlocation(inputadd.val());
-			var link = homepage + '/add_categorize.php';
+			var link = './add_categorize.php';
 			$.get(link + '?project_name=' + inputadd.val(), function(data) {
-				if(data !== "success") {
-					alert(data)
+				if(data === "0") {
+					alert('failed');
 				}
+				get_project();
 			});
 		});
 
 		function get_project() {
-			$.get(link)
+			locationadd.html(location_empty);
+			$.get('./get_project.php', function(data) {
+				// console.log(data);
+				if(data === "0") {
+					return;
+				}
+				var projects = JSON.parse(data);
+				for(var i = 0; i < projects.length; i++) {
+					locationadd.append('<a href="show.html"><button class="btn-location">'+projects[i].substring('project_'.length)+'</button></a>');
+				}
+			});
 		}
+
+		$(document).ready(function() {
+			get_project();
+		});
 	</script>
 
 </body>

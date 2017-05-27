@@ -7,7 +7,7 @@
     </head>
     <body class="login">
         <div class="login">
-           <form class="" action="login.php" method="post">
+           <form class="" action="./categorize.php" method="post">
            <div class="pic-test">
             <img src="logo.jpg" class="logo"/>
            </div>
@@ -16,6 +16,11 @@
                     <li>Password  <input type='password' name='password' class="login-pass"></li>
             </ul>
             <br><input type="submit" value="LOGIN" class="btn-submit"/>
+            <?php
+               if(isset($_GET['login_failed']) && $_GET['login_failed'] == 1) {
+                  echo '<p style="color: red;">Wrong username or password.</p>';
+               }
+            ?>
             </form>
         </div>
     </body>

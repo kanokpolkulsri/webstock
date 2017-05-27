@@ -31,16 +31,42 @@
 	<div class="add">
 		<input type="input" name="locate" class="input-value-add">
 		<button class="button-add"> + </button>
-		<!--<button class="button-delete"> - </button>-->
 	</div>
 	<div class="location"></div>
+	<div class="delete">
+		<button class="button-delete"> - </button>
+		<div class="name-delete"">
+			<input type="input" name="locate" class="input-value-del">
+			<button class="btn-del">delete</button>
+		</div>
+	</div>
 
 
 	<script type="text/javascript">
 		var buttonadd = $('.button-add');
+		var buttondel = $('.button-delete');
 		var inputadd = $('.input-value-add');
+		var inputdel = $('.input-value-del');
 		var locationadd = $('.location');
 		var location_empty = locationadd.html();
+		var checkClickButtonDel = false;
+		var divDel = $('.name-delete');
+		divDel.hide();
+		var buttonConfirmDelete = $('btn-del');
+		buttondel.click(function(){
+			if(!checkClickButtonDel){
+				checkClickButtonDel = true;
+				divDel.show();
+
+			}else{
+				checkClickButtonDel = false;
+				divDel.hide();
+			}
+		});
+
+		buttonConfirmDelete.click(function(){
+			// inputdel.val();
+		});
 
 		// function addlocation(input){
 		// 	locationadd.append('<a href="show.html"><button class="btn-location">'+input+'</button></a>');

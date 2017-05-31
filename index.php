@@ -8,7 +8,7 @@
     <head>
         <meta charset="utf-8">
         <title>Login Page</title>
-        <link rel="stylesheet" type="text/css" href="s.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body class="login">
         <div class="login">
@@ -19,11 +19,11 @@
                     <li>Password  <input type='password' name='password' class="login-pass"></li>
             </ul>
             <br><input type="submit" value="SIGN IN" class="btn-submit"/>
-            <!-- <?php
+            <?php
                if(isset($_GET['login_failed']) && $_GET['login_failed'] == 1) {
-                  echo '<p style="color: red;">Wrong username or password.</p>';
+                  echo '<p class="login-fail">Wrong username or password.</p>';
                }
-            ?> -->
+            ?>
             </form>
         </div>
     </body>

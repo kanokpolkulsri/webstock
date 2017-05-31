@@ -338,14 +338,14 @@ ul.login {
 }
 
 .button-add-user {
-  width: 200px; 
-  height: 30px; 
+  width: 200px;
+  height: 30px;
   margin-top: 5px;
 }
 
 .button-del-user {
-  width: 200px; 
-  height: 30px; 
+  width: 200px;
+  height: 30px;
   margin-top: 5px;
 }
 
@@ -411,4 +411,13 @@ ul.login {
 
 .member {
   margin-top: -10px;
+}
+
+.login-fail {
+   text-align: center;
+   color: red;
+}
+
+.button-user {
+   right: 100px;
 }

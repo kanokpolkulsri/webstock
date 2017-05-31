@@ -22,7 +22,7 @@
 <head>
 	<title></title>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="s.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -34,6 +34,7 @@
 			ชื่อโครงการ : <input type="input" name="locate" class="input-value-name-add" style="margin-right: 20px;">
 			WBS No. : <input type="input" name="locate" class="input-value-wbs-add" style="margin-right: 20px;">
 			<button class="button-add">เพิ่มโครงการ</button>
+			<a href="./member.php"><button class="button-user">จัดการผู้ใช้</button></a>
 		</div>
 		<div class="location"></div>
 	</div>
@@ -64,7 +65,7 @@
 				}
 				var projects = JSON.parse(data);
 				for(var i = 0; i < projects.length; i++) {
-					locationadd.append('<a href="show.html"><button class="btn-location">'+projects[i].ProjName + ' (' + projects[i].ProjWBS.substring('project_')+')</button></a>');
+					locationadd.append('<a href="./show.php?ProjWBS=' + projects[i].ProjWBS + '"><button class="btn-location">'+projects[i].ProjName + ' (' + projects[i].ProjWBS.substring('project_')+')</button></a>');
 				}
 			});
 		}

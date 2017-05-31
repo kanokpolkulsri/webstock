@@ -37,6 +37,7 @@
    ) CHARSET=utf8";
    if ($conn2->query($sql) === FALSE) {
       echo $conn->error;
+      die();
    }
    $sql = "CREATE TABLE tb_out (
       ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -54,6 +55,7 @@
    ) CHARSET=utf8";
    if ($conn2->query($sql) === FALSE) {
       echo $conn->error;
+      die();
    }
    $sql = "CREATE TABLE tb_rec (
       ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -70,5 +72,7 @@
    ) CHARSET=utf8";
    if ($conn2->query($sql) === FALSE) {
       echo $conn->error;
+      die();
    }
+   echo 'success';
 ?>

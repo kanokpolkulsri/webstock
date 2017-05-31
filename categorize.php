@@ -10,10 +10,11 @@
 	define('HOMEPAGE', '.');
 	// $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 	$db = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD);
-	if($db->connect_error) {
+	if($db->connect_error || DB_USERNAME == '' || DB_PASSWORD == '') {
 		header("Location: ".HOMEPAGE."/?login_failed=1");
 		die();
 	}
+   mysqli_set_charset($db, "utf8");
 	$_SESSION['username'] = DB_USERNAME;
 	$_SESSION['password'] = DB_PASSWORD;
 ?>
@@ -21,7 +22,7 @@
 <head>
 	<title></title>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="s.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -89,14 +90,14 @@
 
 
 		var buttonadd = $('.button-add');
-		var inputadd = $('.input-value-name-add');
+		var inputname = $('.input-value-name-add');
 		var inputwbs = $('.input-value-wbs-add');
 		var locationadd = $('.location');
 		var location_empty = locationadd.html();
 
 		buttonadd.click(function(){
 			var link = './add_categorize.php';
-			$.get(link + '?project_name=' + inputadd.val(), function(data) {
+			$.get(link + '?ProjWBS=' + inputwbs.val() + '&ProjName=' + inputname.val(), function(data) {
 				if(data !== "success") {
 					alert(data);
 				}
@@ -113,7 +114,7 @@
 				}
 				var projects = JSON.parse(data);
 				for(var i = 0; i < projects.length; i++) {
-					locationadd.append('<a href="show.html"><button class="btn-location">'+projects[i].substring('project_'.length)+'</button></a>');
+					locationadd.append('<a href="show.html"><button class="btn-location">'+projects[i].ProjName + ' (' + projects[i].ProjWBS.substring('project_')+')</button></a>');
 				}
 			});
 		}

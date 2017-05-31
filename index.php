@@ -1,9 +1,14 @@
 <!DOCTYPE html>
+<?php
+   session_start();
+   session_unset();
+   session_destroy();
+?>
 <html>
     <head>
         <meta charset="utf-8">
         <title>Login Page</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="s.css">
     </head>
     <body class="login">
         <div class="login">

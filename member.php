@@ -119,6 +119,13 @@
 	var buttonDeleteUser = $('.button-del-user');
 	buttonDeleteUser.click(function(){
 		//ถ้ากดปุ่มนี้ก็เอาค่า delUsername.val() , delName.val() , delCompany.val()
+      $.post('./delete_user.php', {username: delUsername.val(), name: delName.val(), company: delCompany.val()}, function(data) {
+         if(data !== 'success') {
+            alert(data);
+         } else {
+            location.reload();
+         }
+      });
 	});
 
 

@@ -9,6 +9,9 @@
 .row {
   display: table-row;
   background: #f6f6f6;
+  font-style: normal;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .row:nth-of-type(odd) {
@@ -27,7 +30,8 @@
 }
 
 .row.blue {
-  background: #2980b9;
+  background-color: #CAEBF2;
+  color: #000;
 }
 
 .cell {
@@ -37,6 +41,34 @@
 }
 
 .table {
+  margin: 0 0 40px 0;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: table;
+}
+
+.table-user {
+  margin: 0 0 40px 0;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: table;
+}
+
+.table-inv {
+  margin: 0 0 40px 0;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: table;
+}
+
+.table-rec {
+  margin: 0 0 40px 0;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: table;
+}
+
+.table-out {
   margin: 0 0 40px 0;
   width: 100%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
@@ -205,20 +237,24 @@ ul.login {
   margin-left: 10px;
 }
 
+.member-delete-user {
+  margin-left: 10px;
+}
+
 .add-user-input {
   margin-left: 30px;
   width: 480px;
 }
 
-@media (max-width: 490px) {
+@media (max-width: 430px) {
   .add-user-input {
-    width: 350px;
+    width: 400px;
   }
 }
 
 @media (max-width: 370px) {
   .add-user-input {
-    width: 290px;
+    width: 360px;
   }
 }
 
@@ -231,20 +267,20 @@ ul.login {
   border-radius: 10px;
 }
 
-@media (max-width: 565px) {
-  .all-row-user {
-    margin-right: 10%;
-  }
+.del-all-row-user {
+  list-style: none;
+  background-color: #CAEBF2;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-right: 100px;
+  border-radius: 10px;
+  width: 290px;
+  margin-left: 30px;
 }
 
 @media (max-width: 400px) {
-
   .row-user {
     margin-left: -20px;
-  }
-
-  .all-row-user {
-    margin-left: -40px;
   }
 }
 
@@ -275,11 +311,39 @@ ul.login {
   background-color: #FF3B3F;
 }
 
+.button-show-delete-user {
+  background-color: #A9A9A9;
+  border-style: none;
+  border-radius: 2px;
+}
+
+.button-show-delete-user:hover {
+  background-color: #FF3B3F;
+}
+
+
+.button-show-member-data {
+  background-color: #A9A9A9;
+  border-style: none;
+  border-radius: 2px;
+  margin-left: 10px;
+}
+
+.button-show-member-data:hover {
+  background-color: #FF3B3F;
+}
+
 .cate-btn-active {
   background-color: #FF3B3F;
 }
 
 .button-add-user {
+  width: 200px; 
+  height: 30px; 
+  margin-top: 5px;
+}
+
+.button-del-user {
   width: 200px; 
   height: 30px; 
   margin-top: 5px;
@@ -338,4 +402,13 @@ ul.login {
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
   background: #fefefe;
+}
+
+/*member*/
+.member-btn-active {
+  background-color: #27ae60;
+}
+
+.member {
+  margin-top: -10px;
 }

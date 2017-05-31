@@ -8,10 +8,8 @@
    // define('DB_USERNAME', 'user1');
    // define('DB_PASSWORD', '1q2w3e4r');
    define('DB_DATABASE', 'projects');
-   define('HOMEPAGE', '.');
    $conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD, DB_DATABASE);
-   if($conn->connect_error) {
-    //   header("Location: ".HOMEPAGE."/?login_failed=1");
+   if($conn->connect_error || $_SESSION['admin'] == 0) {
       die('connection error');
    }
    mysqli_set_charset($conn, "utf8");

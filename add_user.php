@@ -8,7 +8,6 @@
    // define('DB_USERNAME', 'user1');
    // define('DB_PASSWORD', '1q2w3e4r');
    define('DB_DATABASE', 'projects');
-   // $conn = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
    $conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD, DB_DATABASE);
    mysqli_set_charset($conn, "utf8");
    $error = '';

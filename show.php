@@ -74,7 +74,11 @@
 				?>
 			</div>
 		</div>
-		<input type="file" name="file" id="file-inv" style="display: block;">
+      <?php
+         if($_SESSION['admin'] == 1) {
+      		echo '<input type="file" name="file" id="file-inv" style="display: block;">';
+         }
+      ?>
 	</div>
 
 	<div class="show-all-history-rec">
@@ -114,7 +118,11 @@
 				?>
 			</div>
 		</div>
-		<input type="file" name="file" id="file-rec" style="display: block;">
+      <?php
+         if($_SESSION['admin'] == 1) {
+      		echo '<input type="file" name="file" id="file-rec" style="display: block;">';
+         }
+      ?>
 	</div>
 
 	<div class="show-all-history-out">
@@ -155,18 +163,25 @@
 				?>
 			</div>
 		</div>
-		<input type="file" name="file" id="file-out" style="display: block;">
+      <?php
+         if($_SESSION['admin'] == 1) {
+            echo '<input type="file" name="file" id="file-out" style="display: block;">';
+         }
+      ?>
 	</div>
 
-	<div class="show-delete-this-proj">
-		<button class="show-btn-delete">Delete this project</button><br>
-		<div class="show-delete-confirm">
-		Project Name : <input class="show-input-del-name"/><br>
-		WBS No. : <input class="show-input-del-WBS"/><br>
-		<button class="show-btn-confirm-del">ยืนยันการลบ</button>
-		</div>
-
-	</div>
+	<?php
+      if($_SESSION['admin'] == 1) {
+         echo '<div class="show-delete-this-proj">
+      		<button class="show-btn-delete">Delete this project</button><br>
+      		<div class="show-delete-confirm">
+      		Project Name : <input class="show-input-del-name"/><br>
+      		WBS No. : <input class="show-input-del-WBS"/><br>
+      		<button class="show-btn-confirm-del">ยืนยันการลบ</button>
+      		</div>
+      	</div>';
+      }
+   ?>
 
 	<script type="text/javascript">
 		/*

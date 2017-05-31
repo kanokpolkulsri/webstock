@@ -30,10 +30,14 @@
 	<p class="title-cate"> WELCOME TMDSEO4</p>
 	<div class="cate-data-all">
 		<div class="add">
-			ชื่อโครงการ : <input type="input" name="locate" class="input-value-name-add" style="margin-right: 20px;">
-			WBS No. : <input type="input" name="locate" class="input-value-wbs-add" style="margin-right: 20px;">
-			<button class="button-add">เพิ่มโครงการ</button>
-			<a href="./member.php"><button class="button-user">จัดการผู้ใช้</button></a>
+			<?php
+				if($_SESSION['admin'] == 1) {
+					echo 'ชื่อโครงการ : <input type="input" name="locate" class="input-value-name-add" style="margin-right: 20px;">
+					WBS No. : <input type="input" name="locate" class="input-value-wbs-add" style="margin-right: 20px;">
+					<button class="button-add">เพิ่มโครงการ</button>
+					<a href="./member.php"><button class="button-user">จัดการผู้ใช้</button></a>';
+				}
+			?>
 			<a href="./logout.php"><button class="button-user">ออกจากระบบ</button></a>
 		</div>
 		<div class="location"></div>

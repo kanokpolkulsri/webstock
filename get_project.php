@@ -8,9 +8,10 @@
    // define('DB_USERNAME', 'user1');
    // define('DB_PASSWORD', '1q2w3e4r');
    define('DB_DATABASE', 'projects');
-   define('HOMEPAGE', '.');
-   // $conn = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
    $conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD, DB_DATABASE);
+   if($conn->connect_error) {
+      die('connection error');
+   }
    mysqli_set_charset($conn, "utf8");
    $sql = 'SELECT * FROM project_map ORDER BY LastUpdate DESC';
    $result = $conn->query($sql);

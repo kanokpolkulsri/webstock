@@ -8,8 +8,10 @@
    // define('DB_USERNAME', 'user1');
    // define('DB_PASSWORD', '1q2w3e4r');
    define('DB_DATABASE', 'projects');
-   // $conn = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
    $conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD, DB_DATABASE);
+   if($conn->connect_error || $_SESSION['admin'] == 0) {
+      die('connection error');
+   }
    mysqli_set_charset($conn, "utf8");
    $error = '';
    $sql = 'SELECT Username FROM users WHERE Username = "' . $_POST['username'] . '" AND Name = "' . $_POST['name'] . '" AND Company = "' . $_POST['company'] . '"';

@@ -82,19 +82,20 @@
 }
 
 body.login {
-  background-color: #fff;
-  color: #212F3D;
+  background-color: #efefef;
+  color: #545454;
 }
 
 div.login {
   width: 300px;
-  height: 280px;
-  background-color: #fefefe;
+  height: auto;
+  background-color: #fff;
   margin-left: 35%;
-  border-style: solid;
+  border-radius: 10px;
+  /*border-style: solid;
   border-width: 1px;
   border-radius: 5px;
-  border-color: #2980b9;
+  border-color: #2980b9;*/
   margin-top: 120px;
 }
 
@@ -134,7 +135,15 @@ div.login {
   }
 }
 
+.login-title {
+  text-align: center;
+  font-size: 20px;
+  padding-top: 30px;
+}
+
 ul.login {
+  margin-top: 10px;
+  margin-bottom: 50px;
   list-style: none;
   width: 100%;
   display: inline-block;
@@ -143,16 +152,36 @@ ul.login {
 .login-pass {
   margin-top: 10px;
   margin-left: 9px;
+  height: 20px;
+  font-size: 14px;
 }
 
 .login-usr {
   margin-left: 6px;
+  height: 20px;
+  font-size: 14px;
 }
 
 .btn-submit {
-  height: 30px;
-  width: 200px;
-  margin-left: 40px;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  background-color: #A9A9A9;
+  border-style: none;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.btn-submit:hover {
+  height: 50px;
+  width: 100%;
+  background-color: #FF3B3F;
+  color: #fff;
+  border-radius: 10px;
+  border-color: #fff;
+  border-style: none;
+  font-size: 14px;
 }
 
 .logo {
@@ -163,9 +192,9 @@ ul.login {
   margin-bottom: 10px;
 }
 
-.pic-test {
+/*.pic-test {
   padding-top: 40px;
-}
+}*/
 
 .delete {
   margin-left: 10%;

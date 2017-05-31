@@ -51,7 +51,8 @@
       OutPerson VARCHAR(200) NOT NULL,
       OutComp  VARCHAR(200) NOT NULL,
       OutAdmin VARCHAR(200) NOT NULL,
-      OutStorage  VARCHAR(400) NOT NULL
+      OutStorage  VARCHAR(400) NOT NULL,
+      LastUpdate DATETIME NOT NULL
    ) CHARSET=utf8";
    if ($conn2->query($sql) === FALSE) {
       echo $conn->error;
@@ -68,7 +69,8 @@
       RecPriceTotal FLOAT(40, 10) NOT NULL,
       RecPerson VARCHAR(200) NOT NULL,
       RecComp  VARCHAR(200) NOT NULL,
-      RecStorage  VARCHAR(400) NOT NULL
+      RecStorage  VARCHAR(400) NOT NULL,
+      LastUpdate DATETIME NOT NULL
    ) CHARSET=utf8";
    if ($conn2->query($sql) === FALSE) {
       echo $conn->error;

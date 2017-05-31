@@ -12,7 +12,7 @@
    // $conn = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
    $conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD, DB_DATABASE);
    mysqli_set_charset($conn, "utf8");
-   $sql = 'SELECT * FROM project_map ORDER BY LastUpdate';
+   $sql = 'SELECT * FROM project_map ORDER BY LastUpdate DESC';
    $result = $conn->query($sql);
 
    // $result = $conn->query("SHOW DATABASES;");

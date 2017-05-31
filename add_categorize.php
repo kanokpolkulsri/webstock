@@ -38,4 +38,37 @@
    if ($conn2->query($sql) === FALSE) {
       echo $conn->error;
    }
+   $sql = "CREATE TABLE tb_out (
+      ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+      OutDate DATE NOT NULL,
+      OutNo CHAR(8) NOT NULL,
+      OutName VARCHAR(200) NOT NULL,
+      OutAmount INT NOT NULL,
+      OutUnit VARCHAR(100) NOT NULL,
+      OutPriceUnit FLOAT(20, 10) NOT NULL,
+      OutPriceTotal FLOAT(40, 10) NOT NULL,
+      OutPerson VARCHAR(200) NOT NULL,
+      OutComp  VARCHAR(200) NOT NULL,
+      OutAdmin VARCHAR(200) NOT NULL,
+      OutStorage  VARCHAR(400) NOT NULL
+   ) CHARSET=utf8";
+   if ($conn2->query($sql) === FALSE) {
+      echo $conn->error;
+   }
+   $sql = "CREATE TABLE tb_rec (
+      ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+      RecDate DATE NOT NULL,
+      RecNo CHAR(8) NOT NULL,
+      RecName VARCHAR(200) NOT NULL,
+      RecAmount INT NOT NULL,
+      RecUnit VARCHAR(100) NOT NULL,
+      RecPriceUnit FLOAT(20, 10) NOT NULL,
+      RecPriceTotal FLOAT(40, 10) NOT NULL,
+      RecPerson VARCHAR(200) NOT NULL,
+      RecComp  VARCHAR(200) NOT NULL,
+      RecStorage  VARCHAR(400) NOT NULL
+   ) CHARSET=utf8";
+   if ($conn2->query($sql) === FALSE) {
+      echo $conn->error;
+   }
 ?>

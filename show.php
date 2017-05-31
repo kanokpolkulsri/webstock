@@ -245,24 +245,32 @@
 			var file = this.files[0];
 			var reader = new FileReader();
 			reader.onload = function(progressEvent){
-			var lines = this.result.split('\n');
-			for(var line = 0; line < lines.length; line++){
-				if(lines[line].replace(' ', '').length === 0) {
-					continue;
-				}
-				var data = lines[line].split(",");
-				var data_str = '[';
-				for(var i = 0; i < data.length; i++) {
-					data_str += data[i].replace('$', '');
-					if(i !== data.length - 1) {
-						data_str += ',';
+				var lines = this.result.split('\n');
+				var head = lines[0].split(",");
+				var head_str = '(';
+				for(var i = 0; i < head.length; i++) {
+					head_str += head[i].replace(/"/g, '');
+					if(i !== head.length - 1) {
+						head_str += ',';
 					}
 				}
-				data_str += ']';
-				$.get('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_inv&data='+data_str, function(data) {
-					console.log(data);
-				});
-				// tableinv.append('<div class="row"><div class="cell">'+check[0]+'</div><div class="cell">'+check[1]+'</div><div class="cell">'+check[2]+'</div><div class="cell">'+check[3]+'</div><div class="cell">'+check[4]+'</div></div>');
+				for(var line = 1; line < lines.length; line++){
+					if(lines[line].replace(' ', '').length === 0) {
+						continue;
+					}
+					var data = lines[line].split(",");
+					var data_str = '(';
+					for(var i = 0; i < data.length; i++) {
+						data_str += data[i].replace('$', '');
+						if(i !== data.length - 1) {
+							data_str += ',';
+						}
+					}
+					// console.log('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_inv&head=' + head_str + '&data='+data_str);
+					$.get('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_inv&head=' + head_str + '&data='+data_str, function(data) {
+						console.log(data);
+					});
+					// tableinv.append('<div class="row"><div class="cell">'+check[0]+'</div><div class="cell">'+check[1]+'</div><div class="cell">'+check[2]+'</div><div class="cell">'+check[3]+'</div><div class="cell">'+check[4]+'</div></div>');
 
 				}
 			};
@@ -281,7 +289,23 @@
 			reader.onload = function(progressEvent){
 			var lines = this.result.split('\n');
 			for(var line = 0; line < lines.length; line++){
-				var check = lines[line].split(",");
+				if(lines[line].replace(' ', '').length === 0) {
+					continue;
+				}
+				var data = lines[line].split(",");
+				var data_str = '[';
+				for(var i = 0; i < data.length; i++) {
+					data_str += data[i].replace('$', '');
+					if(i !== data.length - 1) {
+						data_str += ',';
+					}
+				}
+				data_str += ']';
+				$.get('./clear_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_rec', function() {
+					$.get('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_rec&data='+data_str, function(data) {
+						console.log(data);
+					});
+				});
 
 				// tablerec.append('<div class="row"><div class="cell">'+check[0]+'</div><div class="cell">'+check[1]+'</div><div class="cell">'+check[2]+'</div><div class="cell">'+check[3]+'</div><div class="cell">'+check[4]+'</div></div>');
 
@@ -302,7 +326,23 @@
 			reader.onload = function(progressEvent){
 			var lines = this.result.split('\n');
 			for(var line = 0; line < lines.length; line++){
-				var check = lines[line].split(",");
+				if(lines[line].replace(' ', '').length === 0) {
+					continue;
+				}
+				var data = lines[line].split(",");
+				var data_str = '[';
+				for(var i = 0; i < data.length; i++) {
+					data_str += data[i].replace('$', '');
+					if(i !== data.length - 1) {
+						data_str += ',';
+					}
+				}
+				data_str += ']';
+				$.get('./clear_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_out', function() {
+					$.get('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_out&data='+data_str, function(data) {
+						console.log(data);
+					});
+				});
 
 				// tableout.append('<div class="row"><div class="cell">'+check[0]+'</div><div class="cell">'+check[1]+'</div><div class="cell">'+check[2]+'</div><div class="cell">'+check[3]+'</div><div class="cell">'+check[4]+'</div></div>');
 

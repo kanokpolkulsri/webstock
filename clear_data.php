@@ -15,8 +15,7 @@
       die('connection error');
    }
    mysqli_set_charset($conn, "utf8");
-   $sql = 'INSERT INTO ' . $_GET['table'] . ' ' . $_GET['head'] . ', LastUpdate)' . ' VALUES ' . $_GET['data'] . ',NOW())';
-   // echo $sql;
+   $sql = 'DELETE FROM ' . $_GET['table'];
    if($conn->query($sql) === TRUE) {
       echo 'success';
    } else {

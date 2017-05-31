@@ -65,7 +65,7 @@
 				}
 				var projects = JSON.parse(data);
 				for(var i = 0; i < projects.length; i++) {
-					locationadd.append('<a href="./show.php?ProjWBS=' + projects[i].ProjWBS + '"><button class="btn-location">'+projects[i].ProjName + ' (' + projects[i].ProjWBS.substring('project_')+')</button></a>');
+					locationadd.append('<a href="./show.php?ProjWBS=' + projects[i].ProjWBS + '&ProjName=' + projects[i].ProjName + '"><button class="btn-location">'+projects[i].ProjName + ' (' + projects[i].ProjWBS.substring('project_')+')</button></a>');
 				}
 			});
 		}

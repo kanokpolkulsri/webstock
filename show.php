@@ -28,8 +28,12 @@
 </head>
 <body class="body-show">
 	<div class="show-title-Proj">
-		<p class="show-title-Proj-name">NAME</p>
-		<p class="show-title-Proj-WBS">WBS</p>
+		<!-- <p class="show-title-Proj-name">NAME</p>
+		<p class="show-title-Proj-WBS">WBS</p> -->
+		<?php
+			echo '<p class="show-title-Proj-name">' . $_GET['ProjName'] .'</p>';
+			echo '<p class="show-title-Proj-WBS">' . $_GET['ProjWBS'] .'</p>';
+		?>
 	</div>
 	<div>
 		<button class="show-btn-inv">สินค้าคงคลัง</button>
@@ -243,8 +247,21 @@
 			reader.onload = function(progressEvent){
 			var lines = this.result.split('\n');
 			for(var line = 0; line < lines.length; line++){
-				var check = lines[line].split(",");
-
+				if(lines[line].replace(' ', '').length === 0) {
+					continue;
+				}
+				var data = lines[line].split(",");
+				var data_str = '[';
+				for(var i = 0; i < data.length; i++) {
+					data_str += data[i].replace('$', '');
+					if(i !== data.length - 1) {
+						data_str += ',';
+					}
+				}
+				data_str += ']';
+				$.get('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_inv&data='+data_str, function(data) {
+					console.log(data);
+				});
 				// tableinv.append('<div class="row"><div class="cell">'+check[0]+'</div><div class="cell">'+check[1]+'</div><div class="cell">'+check[2]+'</div><div class="cell">'+check[3]+'</div><div class="cell">'+check[4]+'</div></div>');
 
 				}

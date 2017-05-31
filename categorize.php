@@ -47,6 +47,9 @@
 		var location_empty = locationadd.html();
 
 		buttonadd.click(function(){
+			if(inputwbs.val() === '' || inputname.val() === '') {
+				return;
+			}
 			var link = './add_categorize.php';
 			$.get(link + '?ProjWBS=' + inputwbs.val() + '&ProjName=' + inputname.val(), function(data) {
 				if(data !== "success") {

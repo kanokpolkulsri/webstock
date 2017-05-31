@@ -35,56 +35,65 @@
 		<button class="button-add"> + </button>
 	</div>
 	<div class="location"></div>
-	<!-- <div class="delete">
-		<button class="button-delete"> - </button>
-		<div class="name-delete">
-			<input type="input" name="locate" class="input-value-del">
-			<button class="btn-del">delete</button>
-		</div>
-	</div> -->
-	<div class="add-user">
 
+
+	<div class="add-user">
+		เพิ่มสมาชิก <button class="button-show-add-user">+</button><br>
+		<div class="add-user-input">
+		<ul class="all-row-user">
+			<li class="row-user">Username : <input type="input" name="locate" class="input-regis-username"></li>
+			<li class="row-user">Password : <input type="input" name="locate" class="input-regis-pass1"></li>
+			<li class="row-user">Confirm Password : <input type="input" name="locate" class="input-regis-pass2"></li>
+			<li class="row-user">Name : <input type="input" name="locate" class="input-regis-name"></li>
+			<li class="row-user">Phone : <input type="input" name="locate" class="input-regis-phone"></li>
+			<li class="row-user">Company : <input type="input" name="locate" class="input-regis-company"></li>
+			<li class="row-user">Position : <input type="input" name="locate" class="input-regis-position"></li>
+			<button class="button-add-user" style="width: 200px; height: 30px; margin-top: 5px;">เพิ่มสมาชิก</button>
+		</ul>
+		</div>
 	</div>
 
 
 	<script type="text/javascript">
-		var buttonadd = $('.button-add');
-
-		var inputname = $('.input-value-name-add');
-		var inputwbs = $('.input-value-wbs-add');
-
-		var locationadd = $('.location');
-		var location_empty = locationadd.html();
-
-		//var inputdel = $('.input-value-del');
-		/*
-		var buttondel = $('.button-delete');
-		var checkClickButtonDel = false;
-		var divDel = $('.name-delete');
-		divDel.hide();
-		var buttonConfirmDelete = $('btn-del');
-		buttondel.click(function(){
-			if(!checkClickButtonDel){
-				checkClickButtonDel = true;
-				divDel.show();
-
+	/*
+		เพิ่มใหม่ตรง เพิ่มสมาชิก
+	*/
+		var buttonShowAddUser = $('.button-show-add-user');
+		var allRowUser = $('.all-row-user');
+		var checkButtonAddUser = false;
+		allRowUser.hide();
+		buttonShowAddUser.click(function(){
+			if(!checkButtonAddUser){
+				checkButtonAddUser = true;
+				allRowUser.show();
 			}else{
-				checkClickButtonDel = false;
-				divDel.hide();
+				checkButtonAddUser = false;
+				allRowUser.hide();
 			}
 		});
-
-		buttonConfirmDelete.click(function(){
-			// inputdel.val();
-			//เอาค่าจากตรงนี้ไปเช็คว่าตรงกับชื่อดาต้าเบสที่ต้องการจะลบหรือไม่
+		var regisUsername = $('.input-regis-username');
+		var regisPass1 = $('.input-regis-pass1');
+		var regisPass2 = $('.input-regis-pass2');
+		var regisName = $('.input-regis-name');
+		var regisPhone = $('.input-regis-phone');
+		var regisCompany = $('.input-regis-company');
+		var regisPosition = $('.input-regis-position');
+		var buttonAddUser = $('.button-add-user');
+		buttonAddUser.click(function(){
+			//ก็เอาค่าจาก regis.. ไปใส่ได้เลย
 		});
-		*/
+	/*
+		จบส่วนขอการ เพิ่มสมาชิก
+	*/
 
 
 
-		// function addlocation(input){
-		// 	locationadd.append('<a href="show.html"><button class="btn-location">'+input+'</button></a>');
-		// }
+
+		var buttonadd = $('.button-add');
+		var inputname = $('.input-value-name-add');
+		var inputwbs = $('.input-value-wbs-add');
+		var locationadd = $('.location');
+		var location_empty = locationadd.html();
 
 		buttonadd.click(function(){
 			var link = './add_categorize.php';

@@ -12,7 +12,7 @@
     </head>
     <body class="login">
         <div class="login">
-           <form class="" action="./categorize.php" method="post">
+           <form class="" action="./login.php" method="post">
            <p class="login-title">WELCOME, TMDSEO4</p>
             <ul class='login'>
                     <li>Username <input type='text' name='username' class="login-usr"></li>

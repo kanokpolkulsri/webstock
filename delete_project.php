@@ -13,7 +13,10 @@
    $conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD, DB_DATABASE);
    mysqli_set_charset($conn, "utf8");
    $sql = 'DELETE FROM project_map WHERE ProjWBS = '. $_GET['ProjWBS'];
-   $result = $conn->query($sql);
+   $result1 = $conn->query($sql);
    $sql = 'DROP DATABASE project_'. $_GET['ProjWBS'];
-   $result = $conn->query($sql);
+   $result2 = $conn->query($sql);
+   if ($result1 && $result2) {
+      echo "success";
+   }
 ?>

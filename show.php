@@ -193,9 +193,15 @@
 
 		//กดปุ่มยืนยัน ก็คือจะเอาค่าจาก input ไปเทียบกับ database
 		buttonDelConfirm.click(function(){
-			//inputDelName.val() //ค่าที่จะเอาไปเช็คว่าชื่อตรงกับโปรเจคไหม
-			//inputDelWBS.val() //ค่าที่จะเอาไปเช็คว่าwbsตรงกับโปรเจคไหม
-			//ถ้าตรงก็ทำการลบ
+			// inputDelName.val() //ค่าที่จะเอาไปเช็คว่าชื่อตรงกับโปรเจคไหม
+			// inputDelWBS.val() //ค่าที่จะเอาไปเช็คว่าwbsตรงกับโปรเจคไหม
+			// ถ้าตรงก็ทำการลบ
+			if(inputDelName.val() === $('.show-title-Proj-name').text() && inputDelWBS.val() === $('.show-title-Proj-WBS').text()) {
+				$.get('./delete_project.php?ProjWBS='+inputDelWBS.val(), function(data) {
+					console.log(data);
+					window.location = "./categorize.php";
+				});
+			}
 		});
 
 

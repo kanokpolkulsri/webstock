@@ -12,20 +12,11 @@
    $conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD, DB_DATABASE);
    mysqli_set_charset($conn, "utf8");
    $error = '';
-   $sql = 'CREATE USER "' . $_POST['username'] . '"@"localhost" IDENTIFIED BY "' . $_POST['password'] . '"';
-   // echo $sql;
-   $result1 = $conn->query($sql);
-   $error .= $conn->error . '\n';
-   if($_POST['admin'] == '1') {
-      $sql = 'GRANT ALL PRIVILEGES ON * . * TO "' . $_POST['username'] . '"@"localhost"';
+   $sql = 'INSERT INTO users (Username,Name,Phone,Company,Position,State,LastUpdate) VALUES ("' . $_POST['username'] . '","' . $_POST['name'] . '","' . $_POST['phone'] . '","' . $_POST['company'] . '","' . $_POST['position'] . '","' . $_POST['state'] . '",' . 'NOW())';
+   $result = $conn->query($sql);
+   if($result) {
+      echo "success";
    } else {
-      $sql = 'GRANT SELECT ON * . * TO "' . $_POST['username'] . '"@"localhost"';
-   }
-   $result2 = $conn->query($sql);
-   $error .= $conn->error;
-   if($result1 && $result2) {
-      echo 'success';
-   } else {
-      echo $error;
+      echo $conn->error;
    }
 ?>

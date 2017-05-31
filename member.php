@@ -59,6 +59,25 @@
 						<div class="cell">Position</div>
 						<div class="cell">State</div>
 		    		</div>
+               <?php
+                  $sql = 'SELECT * FROM users';
+                  $result = $conn->query($sql);
+                  if ($result->num_rows > 0) {
+                  // output data of each row
+                     while($row = $result->fetch_assoc()) {
+                        echo '<div class="row">';
+                        foreach($row as $key => $val) {
+                           if($key == 'LastUpdate') {
+                              continue;
+                           }
+                           echo '<div class="cell">' . $val . '</div>';
+                        }
+                        echo '</div>';
+                     }
+                  } else {
+                     echo 'no result.';
+                  }
+               ?>
 				</div>
 				<!-- เอาดาต้ามาใส่ตรงนี้ -->
 			</div>
@@ -162,6 +181,23 @@
 		});
 		buttonAddUser.click(function(){
 			//ก็เอาค่าจาก regis.. ไปใส่ได้เลย
+         if(regisPass1.val() !== regisPass2.val()) {
+            alert('Passwords do not match.')
+            return;
+         }
+         $.post('./add_user.php', {username: regisUsername.val(), password: regisPass1.val(), admin: (checkSelectAdmin ? 1 : 0)}, function(data) {
+            if(data !== 'success') {
+               alert(data);
+            } else {
+               $.post('./user_info.php', {username: regisUsername.val(), name: regisName.val(),
+                  phone: regisPhone.val(), company: regisCompany.val(), position: regisPosition.val(), state: (checkSelectAdmin ? 'admin' : 'user')}, function(data) {
+                     if(data !== 'success') {
+                        alert(data);
+                     }
+                     location.reload();
+                  });
+            }
+         });
 		});
 	</script>
 

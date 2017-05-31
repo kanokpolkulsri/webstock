@@ -8,7 +8,7 @@
    define('DB_PASSWORD', $_SESSION['password']);
    // define('DB_USERNAME', 'user1');
    // define('DB_PASSWORD', '1q2w3e4r');
-   define('DB_DATABASE', 'projects');
+   define('DB_DATABASE', 'project_' . $_GET['ProjWBS']);
    define('HOMEPAGE', '.');
    $conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD, DB_DATABASE);
    if($conn->connect_error) {
@@ -49,6 +49,25 @@
 					<div class="cell">ราคารวม</div>
 					<div class="cell">ที่เก็บสินค้า</div>
 	    		</div>
+				<?php
+					$sql = 'SELECT * FROM tb_inv';
+					$result = $conn->query($sql);
+					if ($result->num_rows > 0) {
+					// output data of each row
+						while($row = $result->fetch_assoc()) {
+							echo '<div class="row">';
+							foreach($row as $key => $val) {
+								if($key == 'ID' || $key == 'LastUpdate') {
+									continue;
+								}
+								echo '<div class="cell">' . $val . '</div>';
+							}
+							echo '</div>';
+						}
+					} else {
+						echo 'no result.';
+					}
+				?>
 			</div>
 		</div>
 		<input type="file" name="file" id="file-inv" style="display: block;">
@@ -70,6 +89,25 @@
 					<div class="cell">รับจากบริษัท</div>
 					<div class="cell">ที่เก็บสินค้า</div>
 	    		</div>
+				<?php
+					$sql = 'SELECT * FROM tb_rec';
+					$result = $conn->query($sql);
+					if ($result->num_rows > 0) {
+					// output data of each row
+						while($row = $result->fetch_assoc()) {
+							echo '<div class="row">';
+							foreach($row as $key => $val) {
+								if($key == 'ID' || $key == 'LastUpdate') {
+									continue;
+								}
+								echo '<div class="cell">' . $val . '</div>';
+							}
+							echo '</div>';
+						}
+					} else {
+						echo 'no result.';
+					}
+				?>
 			</div>
 		</div>
 		<input type="file" name="file" id="file-rec" style="display: block;">
@@ -92,6 +130,25 @@
 					<div class="cell">ผู้ดูแลระบบ</div>
 					<div class="cell">ที่เก็บสินค้า</div>
 	    		</div>
+				<?php
+					$sql = 'SELECT * FROM tb_out';
+					$result = $conn->query($sql);
+					if ($result->num_rows > 0) {
+					// output data of each row
+						while($row = $result->fetch_assoc()) {
+							echo '<div class="row">';
+							foreach($row as $key => $val) {
+								if($key == 'ID' || $key == 'LastUpdate') {
+									continue;
+								}
+								echo '<div class="cell">' . $val . '</div>';
+							}
+							echo '</div>';
+						}
+					} else {
+						echo 'no result.';
+					}
+				?>
 			</div>
 		</div>
 		<input type="file" name="file" id="file-out" style="display: block;">

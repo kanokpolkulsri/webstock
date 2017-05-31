@@ -1,8 +1,23 @@
 <!DOCTYPE html>
 <?php
    session_start();
-   session_unset();
-   session_destroy();
+   error_reporting(E_ERROR | E_PARSE);
+   date_default_timezone_set("Asia/Bangkok");
+
+   if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
+      define('DB_SERVER', 'localhost');
+      define('DB_USERNAME', $_SESSION['username']);
+      define('DB_PASSWORD', $_SESSION['password']);
+      // define('DB_USERNAME', 'user1');
+      // define('DB_PASSWORD', '1q2w3e4r');
+      $conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD);
+      if($conn->connect_error) {
+         header("Location: ./logout.php");
+         die('connection error');
+      } else {
+         header("Location: ./categorize.php");
+      }
+   }
 ?>
 <html>
     <head>

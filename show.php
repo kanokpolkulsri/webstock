@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php
+ <?php
    session_start();
    error_reporting(E_ERROR | E_PARSE);
    date_default_timezone_set("Asia/Bangkok");
@@ -35,13 +35,12 @@
 			echo '<p class="show-title-Proj-WBS">' . $_GET['ProjWBS'] .'</p>';
 		?>
 	</div>
-	<div>
+	<div class="show-mode">
 		<button class="show-btn-inv">สินค้าคงคลัง</button>
 		<button class="show-btn-rec">ประวัติการรับสินค้า</button>
 		<button class="show-btn-out">ประวัติการเบิกสินค้า</button>
 	</div>
 	<div class="show-all-data-inv">
-	inv
 		<div class="wrapper">
 			<div class="table-inv">
 				<div class="row header green">
@@ -74,7 +73,7 @@
 				?>
 			</div>
 		</div>
-      <?php
+       <?php
          if($_SESSION['admin'] == 1) {
       		echo '<input type="file" name="file" id="file-inv" style="display: block;">';
          }
@@ -82,7 +81,6 @@
 	</div>
 
 	<div class="show-all-history-rec">
-	rec
 		<div class="wrapper">
 			<div class="table-rec">
 				<div class="row header green">
@@ -97,7 +95,7 @@
 					<div class="cell">รับจากบริษัท</div>
 					<div class="cell">ที่เก็บสินค้า</div>
 	    		</div>
-				<?php
+				 <?php
 					$sql = 'SELECT * FROM tb_rec';
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) {
@@ -118,7 +116,7 @@
 				?>
 			</div>
 		</div>
-      <?php
+       <?php
          if($_SESSION['admin'] == 1) {
       		echo '<input type="file" name="file" id="file-rec" style="display: block;">';
          }
@@ -126,7 +124,6 @@
 	</div>
 
 	<div class="show-all-history-out">
-	out
 		<div class="wrapper">
 			<div class="table-out">
 				<div class="row header green">
@@ -142,7 +139,7 @@
 					<div class="cell">ผู้ดูแลระบบ</div>
 					<div class="cell">ที่เก็บสินค้า</div>
 	    		</div>
-				<?php
+				 <?php
 					$sql = 'SELECT * FROM tb_out';
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) {
@@ -173,11 +170,11 @@
 	<?php
       if($_SESSION['admin'] == 1) {
          echo '<div class="show-delete-this-proj">
-      		<button class="show-btn-delete">Delete this project</button><br>
+      		<button class="show-btn-delete"><b>DELETE THIS PROJECT</b></button><br>
       		<div class="show-delete-confirm">
-      		Project Name : <input class="show-input-del-name"/><br>
-      		WBS No. : <input class="show-input-del-WBS"/><br>
-      		<button class="show-btn-confirm-del">ยืนยันการลบ</button>
+      		Project Name  <input class="show-input-del-name"/><br>
+      		WBS No.  <input class="show-input-del-WBS"/><br>
+      		<button class="show-btn-confirm-del"><b>ยืนยันการลบ</b></button>
       		</div>
       	</div>';
       }
@@ -231,6 +228,7 @@
 		var divOut = $('.show-all-history-out');
 		divRec.hide();
 		divOut.hide();
+		buttonInv.addClass('show-btn-active');
 		divInv.show();
 		function outall(){
 			buttonInv.removeClass('show-btn-active');

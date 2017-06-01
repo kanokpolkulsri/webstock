@@ -389,8 +389,47 @@ ul.login {
   text-align: center;
 }
 
+.show-btn-inv {
+  background-color: #fff;
+  border-radius: 3px;
+  border-color: #e9e9e9;
+  border-style: solid;
+  border-width: 2px;
+  font-size: 14px;
+}
+
+.show-btn-rec {
+  background-color: #fff;
+  border-radius: 3px;
+  border-color: #e9e9e9;
+  border-style: solid;
+  border-width: 2px;
+  font-size: 14px;
+}
+
+.show-btn-out {
+  background-color: #fff;
+  border-radius: 3px;
+  border-color: #e9e9e9;
+  border-style: solid;
+  border-width: 2px;
+  font-size: 14px;
+}
+
+.show-btn-delete {
+  background-color: #fff;
+  border-radius: 3px;
+  border-color: #e9e9e9;
+  border-style: solid;
+  border-width: 2px;
+  font-size: 14px;
+  color: #FF3B3F;
+  margin-left: 30px;
+}
+
 .show-btn-active {
-  background-color: #e9e9e9;
+  border-radius: 3px;
+  border-color: #27ae60;
 }
 
 .body-show {
@@ -402,6 +441,36 @@ ul.login {
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
   background: #fefefe;
+}
+
+.show-input-del-WBS {
+  margin-left: 32px;
+}
+
+.show-delete-confirm {
+  text-align: center;
+  margin-top: 10px;
+  margin-left: 40px;
+  width: 300px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.show-btn-confirm-del {
+  margin-top: 10px;
+  font-size: 14px;
+  width: 200px;
+  background-color: #fff;
+  border-radius: 3px;
+  border-color: #e9e9e9;
+  border-style: solid;
+  border-width: 2px;
+  font-size: 14px;
+  color: #FF3B3F;
+}
+
+.show-mode {
+  text-align: center;
 }
 
 /*member*/

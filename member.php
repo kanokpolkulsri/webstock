@@ -196,7 +196,8 @@
             alert('Passwords do not match.')
             return;
          }
-         $.post('./add_user.php', {username: regisUsername.val(), password: regisPass1.val(), admin: (checkSelectAdmin ? 1 : 0)}, function(data) {
+         $.post('./add_user.php', {username: regisUsername.val(), password: regisPass1.val(), name: regisName.val(),
+                  phone: regisPhone.val(), company: regisCompany.val(), position: regisPosition.val(), state: (checkSelectAdmin ? 'admin' : 'user')}, function(data) {
             if(data !== 'success') {
                alert(data);
             } else {

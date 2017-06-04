@@ -18,24 +18,10 @@
     } else {
         die();
     }
-   $error = '';
-   $sql = 'SELECT Username FROM users WHERE Username = "' . $_POST['username'] . '" AND Name = "' . $_POST['name'] . '" AND Company = "' . $_POST['company'] . '"';
-   $result = $conn->query($sql);
-   if($result->num_rows > 0) {
-      $row = $result->fetch_assoc();
-      $username = $row['Username'];
-      $sql = 'DELETE FROM users WHERE Username = "' . $username . '"';
-      $result = $conn->query($sql);
-      if($result === TRUE) {
-         $sql = 'DROP USER "' . $username . '"@"localhost"';
-         $result = $conn->query($sql);
-         if($result === TRUE) {
-            echo 'success';
-         } else {
-            echo $conn->error;
-         }
-      } else {
-         echo $conn->error;
-      }
+   $sql = 'DELETE FROM users WHERE Username = "' . $_POST['username'] . '" AND Name = "' . $_POST['name'] . '" AND Company = "' . $_POST['company'] . '"';
+   if($conn->query($sql)) {
+       echo "success";
+   } else {
+       echo $conn->error;
    }
 ?>

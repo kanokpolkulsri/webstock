@@ -18,21 +18,12 @@
     } else {
         die();
     }
-   $error = '';
    $sql = 'CREATE USER "' . $_POST['username'] . '"@"localhost" IDENTIFIED BY "' . $_POST['password'] . '"';
+   $sql = 'INSERT INTO users (Username,Password,Name,Phone,Company,Position,State,LastUpdate) VALUES ("' . $_POST['username'] . '","' . hash('sha512', $_POST['password']) . '","' . $_POST['name'] . '","' . $_POST['phone'] . '","' . $_POST['company'] . '","' . $_POST['position'] . '","' . $_POST['state'] . '",' . 'NOW())';
    // echo $sql;
-   $result1 = $conn->query($sql);
-   $error .= $conn->error . '\n';
-   if($_POST['admin'] == '1') {
-      $sql = 'GRANT ALL PRIVILEGES ON * . * TO "' . $_POST['username'] . '"@"localhost"';
-   } else {
-      $sql = 'GRANT SELECT ON * . * TO "' . $_POST['username'] . '"@"localhost"';
-   }
-   $result2 = $conn->query($sql);
-   $error .= $conn->error;
-   if($result1 && $result2) {
+   if($conn->query($sql)) {
       echo 'success';
    } else {
-      echo $error;
+      echo $conn->error;
    }
 ?>

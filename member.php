@@ -200,13 +200,7 @@
             if(data !== 'success') {
                alert(data);
             } else {
-               $.post('./user_info.php', {username: regisUsername.val(), name: regisName.val(),
-                  phone: regisPhone.val(), company: regisCompany.val(), position: regisPosition.val(), state: (checkSelectAdmin ? 'admin' : 'user')}, function(data) {
-                     if(data !== 'success') {
-                        alert(data);
-                     }
-                     location.reload();
-                  });
+                location.reload();
             }
          });
 		});

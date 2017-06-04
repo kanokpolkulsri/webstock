@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2017 at 10:20 PM
+-- Generation Time: Jun 04, 2017 at 07:48 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -47,6 +47,7 @@ INSERT INTO `project_map` (`ProjWBS`, `ProjName`, `LastUpdate`) VALUES
 
 CREATE TABLE `users` (
   `Username` varchar(50) NOT NULL,
+  `Password` varchar(130) NOT NULL,
   `Name` varchar(400) NOT NULL,
   `Phone` varchar(20) NOT NULL,
   `Company` varchar(400) NOT NULL,
@@ -59,9 +60,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`Username`, `Name`, `Phone`, `Company`, `Position`, `State`, `LastUpdate`) VALUES
-('user1', 'user1', '-', '-', '-', 'admin', '2017-06-01 00:00:00'),
-('user2', 'user2', '-', '-', '-', 'user', '2017-05-31 13:06:02');
+INSERT INTO `users` (`Username`, `Password`, `Name`, `Phone`, `Company`, `Position`, `State`, `LastUpdate`) VALUES
+('user1', '', 'user1', '-', '-', '-', 'admin', '2017-06-01 00:00:00'),
+('user2', '', 'user2', '-', '-', '-', 'user', '2017-05-31 13:06:02');
 
 --
 -- Indexes for dumped tables

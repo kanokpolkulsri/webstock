@@ -20,14 +20,8 @@
     }
    $sql = "INSERT INTO project_map (ProjWBS, ProjName, LastUpdate) VALUES ('" . $_GET['ProjWBS'] . '\',\'' . $_GET['ProjName'] . '\',NOW())';
    $conn->query($sql);
-   $sql = "CREATE DATABASE project_".$_GET['ProjWBS'];
-   if ($conn->query($sql) === FALSE) {
-      echo $conn->error;
-   }
 
-   $conn2 = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD, 'project_' . $_GET['ProjWBS']);
-   mysqli_set_charset($conn2, "utf8");
-   $sql = "CREATE TABLE tb_inv (
+   $sql = "CREATE TABLE " . $_GET['ProjWBS'] . "__tb_inv (
       ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       InvNo VARCHAR(50) NOT NULL,
       InvName VARCHAR(1000) NOT NULL,
@@ -38,11 +32,11 @@
       InvStorage VARCHAR(400) NOT NULL,
       LastUpdate DATETIME NOT NULL
    ) CHARSET=utf8";
-   if ($conn2->query($sql) === FALSE) {
+   if ($conn->query($sql) === FALSE) {
       echo $conn->error;
       die();
    }
-   $sql = "CREATE TABLE tb_out (
+   $sql = "CREATE TABLE " . $_GET['ProjWBS'] . "__tb_out (
       ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       OutDate DATE NOT NULL,
       OutNo CHAR(8) NOT NULL,
@@ -57,11 +51,11 @@
       OutStorage  VARCHAR(400) NOT NULL,
       LastUpdate DATETIME NOT NULL
    ) CHARSET=utf8";
-   if ($conn2->query($sql) === FALSE) {
+   if ($conn->query($sql) === FALSE) {
       echo $conn->error;
       die();
    }
-   $sql = "CREATE TABLE tb_rec (
+   $sql = "CREATE TABLE " . $_GET['ProjWBS'] . "__tb_rec (
       ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       RecDate DATE NOT NULL,
       RecNo CHAR(8) NOT NULL,
@@ -75,7 +69,7 @@
       RecStorage  VARCHAR(400) NOT NULL,
       LastUpdate DATETIME NOT NULL
    ) CHARSET=utf8";
-   if ($conn2->query($sql) === FALSE) {
+   if ($conn->query($sql) === FALSE) {
       echo $conn->error;
       die();
    }

@@ -269,7 +269,7 @@
 			var reader = new FileReader();
 			reader.onload = function(progressEvent){
 				var lines = this.result.split('\n');
-				$.get('./clear_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_inv', function() {
+				$.get('./clear_data.php?table=' + $('.show-title-Proj-WBS').text() + '__tb_inv', function() {
 					var head = lines[0].split(",");
 					var head_str = '(';
 					for(var i = 0; i < head.length; i++) {
@@ -291,7 +291,7 @@
 							}
 						}
 						// console.log('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_inv&head=' + head_str + '&data='+data_str);
-						$.get('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_inv&head=' + head_str + '&data='+data_str, function(data) {
+						$.get('./insert_data.php?table=' + $('.show-title-Proj-WBS').text() + '__tb_inv&head=' + head_str + '&data='+data_str, function(data) {
 							console.log(data);
 						});
 						// tableinv.append('<div class="row"><div class="cell">'+check[0]+'</div><div class="cell">'+check[1]+'</div><div class="cell">'+check[2]+'</div><div class="cell">'+check[3]+'</div><div class="cell">'+check[4]+'</div></div>');
@@ -313,7 +313,7 @@
 			var reader = new FileReader();
 			reader.onload = function(progressEvent){
 				var lines = this.result.split('\n');
-				$.get('./clear_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_rec', function() {
+				$.get('./clear_data.php?table=' + $('.show-title-Proj-WBS').text() + '__tb_rec', function() {
 					var head = lines[0].split(",");
 					var head_str = '(';
 					for(var i = 0; i < head.length; i++) {
@@ -357,7 +357,7 @@
 			var reader = new FileReader();
 			reader.onload = function(progressEvent){
 				var lines = this.result.split('\n');
-				$.get('./clear_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_out', function() {
+				$.get('./clear_data.php?table=' + $('.show-title-Proj-WBS').text() + '__tb_out', function() {
 					var head = lines[0].split(",");
 					var head_str = '(';
 					for(var i = 0; i < head.length; i++) {

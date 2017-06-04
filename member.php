@@ -71,7 +71,7 @@
                      while($row = $result->fetch_assoc()) {
                         echo '<div class="row">';
                         foreach($row as $key => $val) {
-                           if($key == 'LastUpdate') {
+                           if($key == 'Password' || $key == 'LastUpdate') {
                               continue;
                            }
                            echo '<div class="cell">' . $val . '</div>';

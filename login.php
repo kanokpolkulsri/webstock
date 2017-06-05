@@ -22,6 +22,7 @@
 		$_SESSION['admin'] = 0;
 		$_SESSION['db_username'] = 'normal_user';
 		$_SESSION['db_password'] = '1q2w3e4r';
+		$_SESSION['last_activity'] = time();
 		if($row['State'] == 'admin') {
 			$_SESSION['admin'] = 1;
 			$_SESSION['db_username'] = 'admin_user';

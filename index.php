@@ -35,7 +35,9 @@
             <?php
                if(isset($_GET['login_failed']) && $_GET['login_failed'] == 1) {
                   echo '<p class="login-fail">Wrong username or password.</p>';
-               }
+              } else if(isset($_GET['session_expired']) && $_GET['session_expired'] == 1) {
+                  echo '<p class="login-fail">Session expired.</p>';
+              }
             ?>
             </form>
         </div>

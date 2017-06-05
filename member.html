@@ -31,9 +31,22 @@
 	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 </head>
 <body>
+	<p class="header-member">USER Management</p>
+	<div class="mode-member">
+		<div class="button-mode-add">
+			<button class="button-show-add-user">+</button> เพิ่มสมาชิก 
+		</div>
+		<div class="button-mode-show">
+			<button class="button-show-member-data">+</button> ข้อมูลสมาชิก 
+		</div>
+		<div class="button-mode-delete">
+			<button class="button-show-delete-user">+</button> ลบสมาชิก 
+		</div>
+	</div>
+
 	<div class="add-user">
-		<button class="button-show-add-user">+</button> เพิ่มสมาชิก <br>
 		<div class="add-user-input">
+		<p> เพิ่มสมาชิก </p>
 			<ul class="all-row-user">
 				<li class="row-user">Username : <input type="input" name="locate" class="input-regis-username"></li>
 				<li class="row-user">Password : <input type="input" name="locate" class="input-regis-pass1"></li>
@@ -51,8 +64,8 @@
 	</div>
 
 	<div class="member-data">
-		<button class="button-show-member-data">+</button> ข้อมูลสมาชิก <br>
 		<div class="member-show-all-data">
+		<p style="margin-left: 30px; margin-bottom: -20px">ข้อมูลสมาชิก</p>
 			<div class="wrapper">
 				<div class="table-user">
 					<div class="row header blue">
@@ -83,14 +96,13 @@
                   }
                ?>
 				</div>
-				<!-- เอาดาต้ามาใส่ตรงนี้ -->
 			</div>
 		</div>
 	</div>
 
 	<div class="member-delete-user">
-		<button class="button-show-delete-user">+</button> ลบสมาชิก <br>
 		<div class="del-user-input">
+			<p style="margin-left: 30px"> ลบสมาชิก</p>
 			<ul class="del-all-row-user">
 				<li class="row-user">Username : <input type="input" name="locate" class="input-del-username"></li>
 				<li class="row-user">Name : <input type="input" name="locate" class="input-del-name"></li>
@@ -111,6 +123,8 @@
 	buttonShowDeleteUser.click(function(){ //เปิดปิดเฉยๆ
 		if(!checkShowDeleteUser){
 			checkShowDeleteUser = true;
+			memberShowAllData.hide();
+			allRowUser.hide();
 			delUserInput.show();
 		}else{
 			checkShowDeleteUser = false;
@@ -142,6 +156,8 @@
 		buttonMemberShowAllData.click(function(){
 			if(!checkMemberShowAllData){
 				checkMemberShowAllData = true;
+				delUserInput.hide();
+				allRowUser.hide();
 				memberShowAllData.show();
 			}else{
 				checkMemberShowAllData = false;
@@ -155,16 +171,18 @@
 
 	/*เพิ่มใหม่ตรง เพิ่มสมาชิก*/
 		var buttonShowAddUser = $('.button-show-add-user');
-		var allRowUser = $('.all-row-user');
+		var allRowUser = $('.add-user-input');
 		var checkButtonAddUser = false;
 		allRowUser.hide();
 		buttonShowAddUser.click(function(){
 			if(!checkButtonAddUser){
-				buttonShowAddUser.addClass('cate-btn-active');
+				// buttonShowAddUser.addClass('cate-btn-active');
 				checkButtonAddUser = true;
+				memberShowAllData.hide();
+				delUserInput.hide();
 				allRowUser.show();
 			}else{
-				buttonShowAddUser.removeClass('cate-btn-active');
+				// buttonShowAddUser.removeClass('cate-btn-active');
 				checkButtonAddUser = false;
 				allRowUser.hide();
 			}
@@ -182,13 +200,13 @@
 		var checkSelectAdmin = true;
 		buttonSelectAdmin.click(function(){
 			checkSelectAdmin = true;
-			buttonSelectAdmin.addClass('member-btn-active');
-			buttonSelectUser.removeClass('member-btn-active');
+			// buttonSelectAdmin.addClass('member-btn-active');
+			// buttonSelectUser.removeClass('member-btn-active');
 		});
 		buttonSelectUser.click(function(){
 			checkSelectAdmin = false;;
-			buttonSelectUser.addClass('member-btn-active');
-			buttonSelectAdmin.removeClass('member-btn-active');
+			// buttonSelectUser.addClass('member-btn-active');
+			// buttonSelectAdmin.removeClass('member-btn-active');
 		});
 		buttonAddUser.click(function(){
 			//ก็เอาค่าจาก regis.. ไปใส่ได้เลย

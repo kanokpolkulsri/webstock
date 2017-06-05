@@ -302,40 +302,40 @@ ul.login {
 }
 
 .button-show-add-user {
-  background-color: #A9A9A9;
+  background-color: #CAEBF2;
   border-style: none;
   border-radius: 2px;
 }
 
 .button-show-add-user:hover {
-  background-color: #FF3B3F;
+  background-color: #A9A9A9;
 }
 
 .button-show-delete-user {
-  background-color: #A9A9A9;
+  background-color: #CAEBF2;
   border-style: none;
   border-radius: 2px;
 }
 
 .button-show-delete-user:hover {
-  background-color: #FF3B3F;
+  background-color: #A9A9A9;
 }
 
 
 .button-show-member-data {
-  background-color: #A9A9A9;
+  background-color: #CAEBF2;
   border-style: none;
   border-radius: 2px;
   margin-left: 10px;
 }
 
 .button-show-member-data:hover {
-  background-color: #FF3B3F;
+  background-color: #A9A9A9;
 }
 
-.cate-btn-active {
-  background-color: #FF3B3F;
-}
+/*.cate-btn-active {
+  background-color: #fff;
+}*/
 
 .button-add-user {
   width: 200px;
@@ -489,4 +489,79 @@ ul.login {
 
 .button-user {
    right: 100px;
+}
+
+.mode-member {
+  display: inline-block;
+}
+
+.button-mode-add {
+  width: 120px;
+  height: 30px;
+  background-color: #FF3B3F;
+  padding-top: 7px;
+  padding-left: 10px;
+  border-radius: 7px;
+  border-width: 2px;
+  border-color: #fff;
+  border-style: solid;
+  color: #fff;
+  float: left;
+  margin-right: 30px;
+}
+
+.button-mode-add:hover {
+  color: #FF3B3F;
+  background-color: #fff;
+  border-color: #FF3B3F;
+}
+
+
+.button-mode-show {
+  width: 120px;
+  height: 30px;
+  background-color: #FF3B3F;
+  padding-top: 7px;
+  padding-right: 10px;
+  border-radius: 7px;
+  border-width: 2px;
+  border-color: #fff;
+  border-style: solid;
+  color: #fff;
+  float: left;
+  margin-right: 30px;
+}
+
+.button-mode-show:hover {
+  color: #FF3B3F;
+  background-color: #fff;
+  border-color: #FF3B3F;
+}
+
+.button-mode-delete {
+  width: 120px;
+  height: 30px;
+  background-color: #FF3B3F;
+  padding-top: 7px;
+  padding-left: 10px;
+  border-radius: 7px;
+  border-width: 2px;
+  border-color: #fff;
+  border-style: solid;
+  color: #fff;
+  float: left;
+  margin-right: 30px;
+}
+
+.button-mode-delete:hover {
+  color: #FF3B3F;
+  background-color: #fff;
+  border-color: #FF3B3F;
+}
+
+.header-member {
+  text-align: center;
+  font-size: 30px;
+  background-color: #e9e9e9;
+  padding: 20px;
 }

@@ -14,10 +14,17 @@
 		die($conn->connect_error);
 	}
 	mysqli_set_charset($conn, "utf8");
-	$sql = 'SELECT * FROM users WHERE Username = "' . $_POST['username'] . '" AND Password = "' . hash('sha512', $_POST['password']) . '"';
+	$sql = 'SELECT * FROM users WHERE Username = "' . $_POST['username'] . '"';
 	$result = $conn->query($sql);
+	$pass = false;
 	if($result->num_rows > 0) {
+		$password = $_POST['password'];
 		$row = $result->fetch_assoc();
+		if(hash_equals($row['Password'], crypt($password, $row['Password']))) {
+			$pass = true;
+		}
+	}
+	if($pass) {
 		$_SESSION['username'] = $_POST['username'];
 		$_SESSION['name'] = $row['Name'];
 		$_SESSION['admin'] = 0;

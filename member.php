@@ -109,6 +109,8 @@
 			allRowUser.hide();
 			delUserInput.show();
 		}else{
+			checkMemberShowAllData = false;
+			checkButtonAddUser = false;
 			checkShowDeleteUser = false;
 			delUserInput.hide();
 		}
@@ -143,12 +145,12 @@
 				memberShowAllData.show();
 			}else{
 				checkMemberShowAllData = false;
+				checkButtonAddUser = false;
+				checkShowDeleteUser = false;
 				memberShowAllData.hide();
 			}
 		});
 		var useradd = $('.table-user');
-		//ตรงนี้ก็เขียนฟังก์ชั่นอ่านค่าจาก database มาใส่ใน useradd
-		//useradd.append("<div class="row">  <div class="cell">username</div>   <div class="cell">name</div>  <div class="cell">phone</div>  <div class="cell">company</div>  <div class="cell">position</div>  <div class="cell">state</div></div>);
 
 
 	/*เพิ่มใหม่ตรง เพิ่มสมาชิก*/
@@ -165,7 +167,9 @@
 				allRowUser.show();
 			}else{
 				// buttonShowAddUser.removeClass('cate-btn-active');
+				checkMemberShowAllData = false;
 				checkButtonAddUser = false;
+				checkShowDeleteUser = false;
 				allRowUser.hide();
 			}
 		});
@@ -182,13 +186,13 @@
 		var checkSelectAdmin = true;
 		buttonSelectAdmin.click(function(){
 			checkSelectAdmin = true;
-			// buttonSelectAdmin.addClass('member-btn-active');
-			// buttonSelectUser.removeClass('member-btn-active');
+			buttonSelectAdmin.addClass('member-btn-active');
+			buttonSelectUser.removeClass('member-btn-active');
 		});
 		buttonSelectUser.click(function(){
 			checkSelectAdmin = false;;
-			// buttonSelectUser.addClass('member-btn-active');
-			// buttonSelectAdmin.removeClass('member-btn-active');
+			buttonSelectUser.addClass('member-btn-active');
+			buttonSelectAdmin.removeClass('member-btn-active');
 		});
 		buttonAddUser.click(function(){
 			//ก็เอาค่าจาก regis.. ไปใส่ได้เลย

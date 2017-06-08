@@ -27,6 +27,10 @@
 		<button class="show-btn-out">ประวัติการเบิกสินค้า</button>
 	</div>
 	<div class="show-all-data-inv">
+		<div class="input-search-inv">
+			รหัสสินค้า : <input type="input" name="locate" class="input-search-inv-no">
+			ชื่อสินค้า : <input type="input" name="locate" class="input-search-inv-name">
+		</div>
 		<div class="wrapper">
 			<div class="table-inv">
 				<div class="row header green">
@@ -67,6 +71,11 @@
 	</div>
 
 	<div class="show-all-history-rec">
+		<div class="input-search-history-rec">
+			วันที่ : <input type="input" name="locate" class="input-search-history-rec-date">
+			รหัสสินค้า : <input type="input" name="locate" class="input-search-history-rec-no">
+			ชื่อสินค้า : <input type="input" name="locate" class="input-search-history-rec-name">
+		</div>
 		<div class="wrapper">
 			<div class="table-rec">
 				<div class="row header green">
@@ -110,6 +119,11 @@
 	</div>
 
 	<div class="show-all-history-out">
+		<div class="input-search-history-out">
+			วันที่ : <input type="input" name="locate" class="input-search-history-out-date">
+			รหัสสินค้า : <input type="input" name="locate" class="input-search-history-out-no">
+			ชื่อสินค้า : <input type="input" name="locate" class="input-search-history-out-name">
+		</div>
 		<div class="wrapper">
 			<div class="table-out">
 				<div class="row header green">
@@ -167,6 +181,22 @@
    ?>
 
 	<script type="text/javascript">
+		/*
+			เพิ่มเติมช่องสำหรับการค้นหา ตอนจะเอาไปใช้ก็ xx.val() นาจาา
+		*/
+		var searchInvNo = $('.input-search-inv-no');
+		var searchInvName = $('.input-search-inv-name');
+
+		var searchHisRecDate = $('.input-search-history-rec-date');
+		var searchHisRecNo = $('.input-search-history-rec-no');
+		var searchHisRecName = $('.input-search-history-rec-name');
+
+		var searchHisOutDate = $('.input-search-history-out-date');
+		var searchHisOutNo = $('.input-search-history-out-no');
+		var searchHisOutName = $('.input-search-history-out-name');
+
+
+
 		/*
 			ลบโครงการ
 		*/

@@ -1,27 +1,9 @@
 <!DOCTYPE html>
- <!-- <?php
-    session_start();
-    error_reporting(E_ERROR | E_PARSE);
-    date_default_timezone_set("Asia/Bangkok");
-    if(isset($_SESSION['username'])) {
-        define('DB_SERVER', 'localhost');
-        define('DB_USERNAME', $_SESSION['db_username']);
-        define('DB_PASSWORD', $_SESSION['db_password']);
-        // define('DB_USERNAME', 'user1');
-        // define('DB_PASSWORD', '1q2w3e4r');
-        define('DB_DATABASE', 'projects');
-        $conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD, DB_DATABASE);
-        if($conn->connect_error) {
-            header("Location: .");
-            die('connection error');
-        }
-        mysqli_set_charset($conn, "utf8");
-    } else {
-        header("Location: ./?login_failed=1");
-        die();
-    }
-?> -->
-<html>
+ <?php
+     $has_page = true;
+     include 'check_connection.php';
+?>
+<html style="min-height: 100%; position: relative;">
 <head>
 	<title></title>
 	<meta charset="utf-8" />
@@ -30,7 +12,7 @@
 	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 </head>
-<body class="body-show">
+<body class="body-show" style="min-height: 100%;">
 	<div class="show-title-Proj">
 		<!-- <p class="show-title-Proj-name">NAME</p>
 		<p class="show-title-Proj-WBS">WBS</p> -->
@@ -48,6 +30,11 @@
 		<div class="input-search-inv">
 			รหัสสินค้า : <input type="input" name="locate" class="input-search-inv-no">
 			ชื่อสินค้า : <input type="input" name="locate" class="input-search-inv-name">
+           <?php
+             if($_SESSION['admin'] == 1) {
+          		echo '<input type="file" name="file" id="file-inv" style="display: inline-block; float: right;">';
+             }
+          ?>
 		</div>
 		<div class="wrapper">
 			<div class="table-inv">
@@ -60,7 +47,7 @@
 					<div class="cell">ราคารวม</div>
 					<div class="cell">ที่เก็บสินค้า</div>
 	    		</div>
-				<!-- <?php
+				<?php
 					$sql = 'SELECT * FROM ' . $_GET['ProjWBS'] . '__tb_inv';
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) {
@@ -78,14 +65,9 @@
 					} else {
 						echo 'no result.';
 					}
-				?> -->
+				?>
 			</div>
 		</div>
-       <?php
-         if($_SESSION['admin'] == 1) {
-      		echo '<input type="file" name="file" id="file-inv" style="display: block;">';
-         }
-      ?>
 	</div>
 
 	<div class="show-all-history-rec">
@@ -93,6 +75,11 @@
 			วันที่ : <input type="input" name="locate" class="input-search-history-rec-date">
 			รหัสสินค้า : <input type="input" name="locate" class="input-search-history-rec-no">
 			ชื่อสินค้า : <input type="input" name="locate" class="input-search-history-rec-name">
+           <?php
+             if($_SESSION['admin'] == 1) {
+          		echo '<input type="file" name="file" id="file-rec" style="display: inline-block; float:right;">';
+             }
+          ?>
 		</div>
 		<div class="wrapper">
 			<div class="table-rec">
@@ -129,11 +116,6 @@
 				?>
 			</div>
 		</div>
-       <?php
-         if($_SESSION['admin'] == 1) {
-      		echo '<input type="file" name="file" id="file-rec" style="display: block;">';
-         }
-      ?>
 	</div>
 
 	<div class="show-all-history-out">
@@ -141,6 +123,11 @@
 			วันที่ : <input type="input" name="locate" class="input-search-history-out-date">
 			รหัสสินค้า : <input type="input" name="locate" class="input-search-history-out-no">
 			ชื่อสินค้า : <input type="input" name="locate" class="input-search-history-out-name">
+            <?php
+               if($_SESSION['admin'] == 1) {
+                  echo '<input type="file" name="file" id="file-out" style="display: inline-block; float: right;">';
+               }
+            ?>
 		</div>
 		<div class="wrapper">
 			<div class="table-out">
@@ -178,11 +165,6 @@
 				?>
 			</div>
 		</div>
-      <?php
-         if($_SESSION['admin'] == 1) {
-            echo '<input type="file" name="file" id="file-out" style="display: block;">';
-         }
-      ?>
 	</div>
 
 	<?php
@@ -212,6 +194,7 @@
 		var searchHisOutDate = $('.input-search-history-out-date');
 		var searchHisOutNo = $('.input-search-history-out-no');
 		var searchHisOutName = $('.input-search-history-out-name');
+
 
 
 		/*
@@ -294,6 +277,12 @@
 		*/
 		var tableinv = $('.table-inv');
 		document.getElementById('file-inv').onchange = function(){
+
+            window.onbeforeunload = function() {
+                return "";
+            }
+            $('div.backdrop').css('display', 'block');
+            $('dialog#wait').css('display', 'block');
 			var file = this.files[0];
 			var reader = new FileReader();
 			reader.onload = function(progressEvent){
@@ -307,10 +296,13 @@
 							head_str += ',';
 						}
 					}
-					for(var line = 1; line < lines.length; line++){
+                    var total = 0;
+                    var finish = 0;
+					for(var line = 1; line < lines.length && continue_query; line++){
 						if(lines[line].replace(' ', '').length === 0) {
 							continue;
 						}
+                        total++;
 						var data = lines[line].split(",");
 						var data_str = '(';
 						for(var i = 0; i < data.length; i++) {
@@ -321,7 +313,25 @@
 						}
 						// console.log('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_inv&head=' + head_str + '&data='+data_str);
 						$.get('./insert_data.php?table=' + $('.show-title-Proj-WBS').text() + '__tb_inv&head=' + head_str + '&data='+data_str, function(data) {
-							console.log(data);
+							// console.log(data);
+                            if(!continue_query) {
+                                return;
+                            }
+                            if(data !== 'success') {
+                                alert('Wrong file format.');
+                                continue_query = false;
+                                $('div.backdrop').css('display', 'none');
+                                $('dialog#wait').css('display', 'none');
+                                window.onbeforeunload = 0;
+                                location.reload();
+                                return;
+                            }
+                            finish++;
+                            $('dialog#wait p#progress').text(String(Math.round(finish/total*100)) + "%");
+                            if(finish === total) {
+                                window.onbeforeunload = 0;
+                                location.reload();
+                            }
 						});
 						// tableinv.append('<div class="row"><div class="cell">'+check[0]+'</div><div class="cell">'+check[1]+'</div><div class="cell">'+check[2]+'</div><div class="cell">'+check[3]+'</div><div class="cell">'+check[4]+'</div></div>');
 					}
@@ -338,6 +348,11 @@
 		*/
 		var tablerec = $('.table-rec');
 		document.getElementById('file-rec').onchange = function(){
+            window.onbeforeunload = function() {
+                return "";
+            }
+            $('div.backdrop').css('display', 'block');
+            $('dialog#wait').css('display', 'block');
 			var file = this.files[0];
 			var reader = new FileReader();
 			reader.onload = function(progressEvent){
@@ -351,10 +366,13 @@
 							head_str += ',';
 						}
 					}
-					for(var line = 1; line < lines.length; line++){
+                    var total = 0;
+                    var finish = 0;
+					for(var line = 1; line < lines.length && continue_query; line++){
 						if(lines[line].replace(' ', '').length === 0) {
 							continue;
 						}
+                        total++;
 						var data = lines[line].split(",");
 						var data_str = '(';
 						for(var i = 0; i < data.length; i++) {
@@ -364,8 +382,26 @@
 							}
 						}
 						// console.log('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_inv&head=' + head_str + '&data='+data_str);
-						$.get('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_rec&head=' + head_str + '&data='+data_str, function(data) {
-							console.log(data);
+						$.get('./insert_data.php?table=' + $('.show-title-Proj-WBS').text() + '__tb_rec&head=' + head_str + '&data='+data_str, function(data) {
+							// console.log(data);
+                            if(!continue_query) {
+                                return;
+                            }
+                            if(data !== 'success') {
+                                alert('Wrong file format.');
+                                continue_query = false;
+                                $('div.backdrop').css('display', 'none');
+                                $('dialog#wait').css('display', 'none');
+                                window.onbeforeunload = 0;
+                                location.reload();
+                                return;
+                            }
+                            finish++;
+                            $('dialog#wait p#progress').text(String(Math.round(finish/total*100)) + "%");
+                            if(finish === total) {
+                                window.onbeforeunload = 0;
+                                location.reload();
+                            }
 						});
 						// tableinv.append('<div class="row"><div class="cell">'+check[0]+'</div><div class="cell">'+check[1]+'</div><div class="cell">'+check[2]+'</div><div class="cell">'+check[3]+'</div><div class="cell">'+check[4]+'</div></div>');
 					}
@@ -380,8 +416,14 @@
 		/*
 			ส่วนของการเพิ่มไฟล์ประวัติการเบิกสินค้า
 		*/
+        var continue_query = true;
 		var tableout = $('.table-out');
 		document.getElementById('file-out').onchange = function(){
+            window.onbeforeunload = function() {
+                return "";
+            }
+            $('div.backdrop').css('display', 'block');
+            $('dialog#wait').css('display', 'block');
 			var file = this.files[0];
 			var reader = new FileReader();
 			reader.onload = function(progressEvent){
@@ -395,10 +437,13 @@
 							head_str += ',';
 						}
 					}
-					for(var line = 1; line < lines.length; line++){
+                    var total = 0;
+                    var finish = 0;
+					for(var line = 1; line < lines.length && continue_query; line++){
 						if(lines[line].replace(' ', '').length === 0) {
 							continue;
 						}
+                        total++;
 						var data = lines[line].split(",");
 						var data_str = '(';
 						for(var i = 0; i < data.length; i++) {
@@ -407,9 +452,27 @@
 								data_str += ',';
 							}
 						}
-						console.log('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_out&head=' + head_str + '&data='+data_str);
-						$.get('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_out&head=' + head_str + '&data='+data_str, function(data) {
-							console.log(data);
+						// console.log('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_out&head=' + head_str + '&data='+data_str);
+						$.get('./insert_data.php?table=' + $('.show-title-Proj-WBS').text() + '__tb_out&head=' + head_str + '&data='+data_str, function(data) {
+							// console.log(data);
+                            if(!continue_query) {
+                                return;
+                            }
+                            if(data !== 'success') {
+                                alert('Wrong file format.');
+                                continue_query = false;
+                                $('div.backdrop').css('display', 'none');
+                                $('dialog#wait').css('display', 'none');
+                                window.onbeforeunload = 0;
+                                location.reload();
+                                return;
+                            }
+                            finish++;
+                            $('dialog#wait p#progress').text(String(Math.round(finish/total*100)) + "%");
+                            if(finish === total) {
+                                window.onbeforeunload = 0;
+                                location.reload();
+                            }
 						});
 						// tableinv.append('<div class="row"><div class="cell">'+check[0]+'</div><div class="cell">'+check[1]+'</div><div class="cell">'+check[2]+'</div><div class="cell">'+check[3]+'</div><div class="cell">'+check[4]+'</div></div>');
 					}
@@ -419,7 +482,12 @@
 			reader.readAsText(file);
 		};
 	</script>
-
+    <dialog id="wait" style="z-index: 100; display: none; position: absolute; top: 250px; font-size: 30px; border: 0px; border-radius: 10px; box-shadow: 0px 0px 20px black;">
+        <p>Please wait</p>
+        <p id="progress" style="text-align: center;"></p>
+    </dialog>
+    <div class="backdrop" style="z-index: 99; display: none; background-color: rgba(0, 0, 0, 0.1); position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;">
+    </div>
 
 </body>
 </html>

@@ -32,7 +32,8 @@
 			ชื่อสินค้า : <input type="input" name="locate" class="input-search-inv-name">
            <?php
              if($_SESSION['admin'] == 1) {
-          		echo '<input type="file" name="file" id="file-inv" style="display: inline-block; float: right;">';
+          		echo '<input type="file" name="file" id="file-inv" style="display: inline-block; float: right;" disabled>';
+                echo '<div style="display: inline-block; float:right;"">รหัสโครงการ : <input id="check-inv" type="text" style="display: inline-block;"></div>';
              }
           ?>
 		</div>
@@ -77,7 +78,8 @@
 			ชื่อสินค้า : <input type="input" name="locate" class="input-search-history-rec-name">
            <?php
              if($_SESSION['admin'] == 1) {
-          		echo '<input type="file" name="file" id="file-rec" style="display: inline-block; float:right;">';
+          		echo '<input type="file" name="file" id="file-rec" style="display: inline-block; float:right;" disabled>';
+                echo '<div style="display: inline-block; float:right;"">รหัสโครงการ : <input id="check-rec" type="text" style="display: inline-block;"></div>';
              }
           ?>
 		</div>
@@ -125,7 +127,8 @@
 			ชื่อสินค้า : <input type="input" name="locate" class="input-search-history-out-name">
             <?php
                if($_SESSION['admin'] == 1) {
-                  echo '<input type="file" name="file" id="file-out" style="display: inline-block; float: right;">';
+                  echo '<input type="file" name="file" id="file-out" style="display: inline-block; float: right;" disabled>';
+                  echo '<div style="display: inline-block; float:right;"">รหัสโครงการ : <input id="check-out" type="text" style="display: inline-block;"></div>';
                }
             ?>
 		</div>
@@ -462,6 +465,28 @@
 			reader.readAsText(file);
 		};
 
+        // เช็คอัพไฟล์
+        var checkInv = $('input#check-inv');
+        var checkRec = $('input#check-rec');
+        var checkOut = $('input#check-out');
+        checkInv.on('keyup', function() {
+            var val = $(this).val();
+            if(val === $('.show-title-Proj-WBS').text()) {
+                $('input#file-inv').prop('disabled', false);
+            }
+        });
+        checkRec.on('keyup', function() {
+            var val = $(this).val();
+            if(val === $('.show-title-Proj-WBS').text()) {
+                $('input#file-rec').prop('disabled', false);
+            }
+        });
+        checkOut.on('keyup', function() {
+            var val = $(this).val();
+            if(val === $('.show-title-Proj-WBS').text()) {
+                $('input#file-out').prop('disabled', false);
+            }
+        });
 
 
 		/*

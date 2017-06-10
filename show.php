@@ -37,7 +37,7 @@
           ?>
 		</div>
 		<div class="wrapper">
-			<div class="table-inv">
+			<div class="table-inv tb_inv">
 				<div class="row header green">
 					<div class="cell">รหัสสินค้า</div>
 					<div class="cell">ชื่อสินค้า</div>
@@ -53,7 +53,7 @@
 					if ($result->num_rows > 0) {
 					// output data of each row
 						while($row = $result->fetch_assoc()) {
-							echo '<div class="row">';
+							echo '<div class="row content">';
 							foreach($row as $key => $val) {
 								if($key == 'ID' || $key == 'LastUpdate') {
 									continue;
@@ -72,7 +72,7 @@
 
 	<div class="show-all-history-rec">
 		<div class="input-search-history-rec">
-			วันที่ : <input type="input" name="locate" class="input-search-history-rec-date">
+			วันที่ : <input type="date" name="locate" class="input-search-history-rec-date">
 			รหัสสินค้า : <input type="input" name="locate" class="input-search-history-rec-no">
 			ชื่อสินค้า : <input type="input" name="locate" class="input-search-history-rec-name">
            <?php
@@ -82,7 +82,7 @@
           ?>
 		</div>
 		<div class="wrapper">
-			<div class="table-rec">
+			<div class="table-rec tb_rec">
 				<div class="row header green">
 					<div class="cell">วันที่</div>
 					<div class="cell">รหัสสินค้า</div>
@@ -101,7 +101,7 @@
 					if ($result->num_rows > 0) {
 					// output data of each row
 						while($row = $result->fetch_assoc()) {
-							echo '<div class="row">';
+							echo '<div class="row content">';
 							foreach($row as $key => $val) {
 								if($key == 'ID' || $key == 'LastUpdate') {
 									continue;
@@ -120,7 +120,7 @@
 
 	<div class="show-all-history-out">
 		<div class="input-search-history-out">
-			วันที่ : <input type="input" name="locate" class="input-search-history-out-date">
+			วันที่ : <input type="date" name="locate" class="input-search-history-out-date">
 			รหัสสินค้า : <input type="input" name="locate" class="input-search-history-out-no">
 			ชื่อสินค้า : <input type="input" name="locate" class="input-search-history-out-name">
             <?php
@@ -130,7 +130,7 @@
             ?>
 		</div>
 		<div class="wrapper">
-			<div class="table-out">
+			<div class="table-out tb_out">
 				<div class="row header green">
 					<div class="cell">วันที่</div>
 					<div class="cell">รหัสสินค้า</div>
@@ -150,7 +150,7 @@
 					if ($result->num_rows > 0) {
 					// output data of each row
 						while($row = $result->fetch_assoc()) {
-							echo '<div class="row">';
+							echo '<div class="row content">';
 							foreach($row as $key => $val) {
 								if($key == 'ID' || $key == 'LastUpdate') {
 									continue;
@@ -194,6 +194,57 @@
 		var searchHisOutDate = $('.input-search-history-out-date');
 		var searchHisOutNo = $('.input-search-history-out-no');
 		var searchHisOutName = $('.input-search-history-out-name');
+
+        // ค้นหา
+        function tableSearch(tableName, q) {
+            // console.log(JSON.stringify(q));
+            $('div.'+tableName).find('div.row.content').html('');
+            console.log('./project_info.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=' + tableName + '&q=' + JSON.stringify(q));
+            $.get('./project_info.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=' + tableName + '&q=' + JSON.stringify(q), function(data) {
+                // console.log(data);
+                var json = JSON.parse(data);
+                for(var i = 0; i < json.length; i++) {
+                    var row = '<div class="row content">';
+                    for(var j = 0; j < json[i].length; j++) {
+                        row += '<div class="cell">'+json[i][j]+'</div>';
+                    }
+                    row += '</div>';
+                    $('div.'+tableName).append(row);
+                }
+            });
+        }
+
+        searchInvNo.on('keyup', function() {
+            tableSearch('tb_inv', [searchInvNo.val(), searchInvName.val()]);
+        });
+
+        searchInvName.on('keyup', function() {
+            tableSearch('tb_inv', [searchInvNo.val(), searchInvName.val()]);
+        });
+
+        searchHisRecDate.change(function() {
+            tableSearch('tb_rec', [searchHisRecDate.val(), searchHisRecNo.val(), searchHisRecName.val()]);
+        });
+
+        searchHisRecNo.on('keyup', function() {
+            tableSearch('tb_rec', [searchHisRecDate.val(), searchHisRecNo.val(), searchHisRecName.val()]);
+        });
+
+        searchHisRecName.on('keyup', function() {
+            tableSearch('tb_rec', [searchHisRecDate.val(), searchHisRecNo.val(), searchHisRecName.val()]);
+        });
+
+        searchHisOutDate.change(function() {
+            tableSearch('tb_out', [searchHisOutDate.val(), searchHisOutNo.val(), searchHisOutName.val()]);
+        });
+
+        searchHisOutNo.on('keyup', function() {
+            tableSearch('tb_out', [searchHisOutDate.val(), searchHisOutNo.val(), searchHisOutName.val()]);
+        });
+
+        searchHisOutName.on('keyup', function() {
+            tableSearch('tb_out', [searchHisOutDate.val(), searchHisOutNo.val(), searchHisOutName.val()]);
+        });
 
 
 

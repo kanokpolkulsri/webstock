@@ -17,8 +17,8 @@
 		<!-- <p class="show-title-Proj-name">NAME</p>
 		<p class="show-title-Proj-WBS">WBS</p> -->
 		<?php
-			echo '<p class="show-title-Proj-name">' . $_GET['ProjName'] .'</p>';
-			echo '<p class="show-title-Proj-WBS">' . $_GET['ProjWBS'] .'</p>';
+			echo 'ชื่อโครงการ : <p class="show-title-Proj-name">' . $_GET['ProjName'] .'</p>';
+			echo 'WBS No. : <p class="show-title-Proj-WBS">' . $_GET['ProjWBS'] .'</p>';
 		?>
 	</div>
 	<div class="show-mode">

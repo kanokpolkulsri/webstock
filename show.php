@@ -473,18 +473,24 @@
             var val = $(this).val();
             if(val === $('.show-title-Proj-WBS').text()) {
                 $('input#file-inv').prop('disabled', false);
+            } else {
+                $('input#file-inv').prop('disabled', true);
             }
         });
         checkRec.on('keyup', function() {
             var val = $(this).val();
             if(val === $('.show-title-Proj-WBS').text()) {
                 $('input#file-rec').prop('disabled', false);
+            } else {
+                $('input#file-rec').prop('disabled', true);
             }
         });
         checkOut.on('keyup', function() {
             var val = $(this).val();
             if(val === $('.show-title-Proj-WBS').text()) {
                 $('input#file-out').prop('disabled', false);
+            } else {
+                $('input#file-out').prop('disabled', true);
             }
         });
 

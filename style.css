@@ -414,6 +414,12 @@ ul.login {
   text-align: center;
   background-color: #f3f3f3;
   font-size: 40px;
+  line-height: 70px;
+  margin-bottom: 20px;
+}
+
+.show-title-Proj p {
+    margin: 0px;
 }
 
 .show-btn-inv {

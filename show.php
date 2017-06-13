@@ -290,7 +290,7 @@
 			// inputDelName.val() //ค่าที่จะเอาไปเช็คว่าชื่อตรงกับโปรเจคไหม
 			// inputDelWBS.val() //ค่าที่จะเอาไปเช็คว่าwbsตรงกับโปรเจคไหม
 			// ถ้าตรงก็ทำการลบ
-			if(inputDelName.val() === $('.show-title-Proj-name').text() && inputDelWBS.val() === $('.show-title-Proj-WBS span').text()) {
+			if(inputDelName.val() === $('.show-title-Proj-name span').text() && inputDelWBS.val() === $('.show-title-Proj-WBS span').text()) {
 				$.get('./delete_project.php?ProjWBS='+inputDelWBS.val(), function(data) {
 					console.log(data);
 					window.location = "./categorize.php";

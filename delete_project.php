@@ -1,7 +1,7 @@
 <?php
     $has_page = false;
     include 'check_connection.php';
-   $sql = 'DELETE FROM project_map WHERE ProjWBS = '. $_GET['ProjWBS'];
+   $sql = 'DELETE FROM project_map WHERE ProjWBS = "'. $_GET['ProjWBS'] . '"';
    $result1 = $conn->query($sql);
    $sql = 'DROP TABLE `'. $_GET['ProjWBS'] . '__tb_inv`';
    $result2 = $conn->query($sql);

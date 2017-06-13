@@ -214,8 +214,8 @@
         function tableSearch(tableName, q) {
             // console.log(JSON.stringify(q));
             $('div.'+tableName).find('div.row.content').html('');
-            console.log('./project_info.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=' + tableName + '&q=' + JSON.stringify(q));
-            $.get('./project_info.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=' + tableName + '&q=' + JSON.stringify(q), function(data) {
+            console.log('./project_info.php?ProjWBS=' + $('.show-title-Proj-WBS span').text() + '&table=' + tableName + '&q=' + JSON.stringify(q));
+            $.get('./project_info.php?ProjWBS=' + $('.show-title-Proj-WBS span').text() + '&table=' + tableName + '&q=' + JSON.stringify(q), function(data) {
                 // console.log(data);
                 var json = JSON.parse(data);
                 for(var i = 0; i < json.length; i++) {
@@ -290,7 +290,7 @@
 			// inputDelName.val() //ค่าที่จะเอาไปเช็คว่าชื่อตรงกับโปรเจคไหม
 			// inputDelWBS.val() //ค่าที่จะเอาไปเช็คว่าwbsตรงกับโปรเจคไหม
 			// ถ้าตรงก็ทำการลบ
-			if(inputDelName.val() === $('.show-title-Proj-name').text() && inputDelWBS.val() === $('.show-title-Proj-WBS').text()) {
+			if(inputDelName.val() === $('.show-title-Proj-name').text() && inputDelWBS.val() === $('.show-title-Proj-WBS span').text()) {
 				$.get('./delete_project.php?ProjWBS='+inputDelWBS.val(), function(data) {
 					console.log(data);
 					window.location = "./categorize.php";
@@ -353,7 +353,7 @@
 			var reader = new FileReader();
 			reader.onload = function(progressEvent){
 				var lines = this.result.split('\n');
-				$.get('./clear_data.php?table=' + $('.show-title-Proj-WBS').text() + '__tb_inv', function() {
+				$.get('./clear_data.php?table=' + $('.show-title-Proj-WBS span').text() + '__tb_inv', function() {
 					var head = lines[0].split(",");
 					var head_str = '(';
 					for(var i = 0; i < head.length; i++) {
@@ -377,8 +377,8 @@
 								data_str += ',';
 							}
 						}
-						// console.log('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_inv&head=' + head_str + '&data='+data_str);
-						$.get('./insert_data.php?table=' + $('.show-title-Proj-WBS').text() + '__tb_inv&head=' + head_str + '&data='+data_str, function(data) {
+						// console.log('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS span').text() + '&table=tb_inv&head=' + head_str + '&data='+data_str);
+						$.get('./insert_data.php?table=' + $('.show-title-Proj-WBS span').text() + '__tb_inv&head=' + head_str + '&data='+data_str, function(data) {
 							// console.log(data);
                             if(!continue_query) {
                                 return;
@@ -423,7 +423,7 @@
 			var reader = new FileReader();
 			reader.onload = function(progressEvent){
 				var lines = this.result.split('\n');
-				$.get('./clear_data.php?table=' + $('.show-title-Proj-WBS').text() + '__tb_rec', function() {
+				$.get('./clear_data.php?table=' + $('.show-title-Proj-WBS span').text() + '__tb_rec', function() {
 					var head = lines[0].split(",");
 					var head_str = '(';
 					for(var i = 0; i < head.length; i++) {
@@ -447,8 +447,8 @@
 								data_str += ',';
 							}
 						}
-						// console.log('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_inv&head=' + head_str + '&data='+data_str);
-						$.get('./insert_data.php?table=' + $('.show-title-Proj-WBS').text() + '__tb_rec&head=' + head_str + '&data='+data_str, function(data) {
+						// console.log('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS span').text() + '&table=tb_inv&head=' + head_str + '&data='+data_str);
+						$.get('./insert_data.php?table=' + $('.show-title-Proj-WBS span').text() + '__tb_rec&head=' + head_str + '&data='+data_str, function(data) {
 							// console.log(data);
                             if(!continue_query) {
                                 return;
@@ -522,7 +522,7 @@
 			var reader = new FileReader();
 			reader.onload = function(progressEvent){
 				var lines = this.result.split('\n');
-				$.get('./clear_data.php?table=' + $('.show-title-Proj-WBS').text() + '__tb_out', function() {
+				$.get('./clear_data.php?table=' + $('.show-title-Proj-WBS span').text() + '__tb_out', function() {
 					var head = lines[0].split(",");
 					var head_str = '(';
 					for(var i = 0; i < head.length; i++) {
@@ -546,8 +546,8 @@
 								data_str += ',';
 							}
 						}
-						// console.log('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS').text() + '&table=tb_out&head=' + head_str + '&data='+data_str);
-						$.get('./insert_data.php?table=' + $('.show-title-Proj-WBS').text() + '__tb_out&head=' + head_str + '&data='+data_str, function(data) {
+						// console.log('./insert_data.php?ProjWBS=' + $('.show-title-Proj-WBS span').text() + '&table=tb_out&head=' + head_str + '&data='+data_str);
+						$.get('./insert_data.php?table=' + $('.show-title-Proj-WBS span').text() + '__tb_out&head=' + head_str + '&data='+data_str, function(data) {
 							// console.log(data);
                             if(!continue_query) {
                                 return;

@@ -1,4 +1,4 @@
-x<!DOCTYPE html>
+<!DOCTYPE html>
 <?php
     $has_page = true;
     include 'check_connection.php';
@@ -19,8 +19,8 @@ x<!DOCTYPE html>
 				echo '<a href="./member.php"><button class="button-user">จัดการผู้ใช้</button></a>';
 			}
 		?>
-		<a href="./logout.php"><button class="button-user">ออกจากระบบ</button></a>	
-	</div>	
+		<a href="./logout.php"><button class="button-user">ออกจากระบบ</button></a>
+	</div>
 	<p class="title-cate"> WELCOME TMDSEO4</p>
 	<div class="cate-data-all">
 		<div class="add">

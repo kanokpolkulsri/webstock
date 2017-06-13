@@ -18,7 +18,7 @@
 
 	<!-- ตรงนี้เพิ่มส่วนของปุ่มกด กลับไปหน้าหลักกับออกจากระบบ -->
 	<div class="btn-show-cateAndLogout">
-		<a href=" ............. "><button class="button-back-cate">หน้าหลัก</button></a>
+		<a href="./index.php"><button class="button-back-cate">หน้าหลัก</button></a>
 		<a href="./logout.php"><button class="button-user">ออกจากระบบ</button></a>	
 	</div>
 

@@ -4,7 +4,7 @@
    $sql = "INSERT INTO project_map (ProjWBS, ProjName, LastUpdate) VALUES ('" . $_GET['ProjWBS'] . '\',\'' . $_GET['ProjName'] . '\',NOW())';
    $conn->query($sql);
 
-   $sql = "CREATE TABLE `" . $_GET['ProjWBS'] . "_tb_inv` (
+   $sql = "CREATE TABLE `" . $_GET['ProjWBS'] . "__tb_inv` (
       ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       InvNo VARCHAR(50) NOT NULL,
       InvName VARCHAR(1000) NOT NULL,

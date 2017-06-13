@@ -29,8 +29,8 @@
 		<!-- <p class="show-title-Proj-name">NAME</p>
 		<p class="show-title-Proj-WBS">WBS</p> -->
 		<?php
-			echo '<p class="show-title-Proj-name">ชื่อโครงการ : ' . $_GET['ProjName'] .'</p>';
-			echo '<p class="show-title-Proj-WBS">WBS No. : ' . $_GET['ProjWBS'] .'</p>';
+			echo '<p class="show-title-Proj-name">ชื่อโครงการ : <span>' . $_GET['ProjName'] .'</span></p>';
+			echo '<p class="show-title-Proj-WBS">WBS No. : <span>' . $_GET['ProjWBS'] .'</span></p>';
 		?>
 	</div>
 	<div class="show-mode">
@@ -483,7 +483,7 @@
         var checkOut = $('input#check-out');
         checkInv.on('keyup', function() {
             var val = $(this).val();
-            if(val === $('.show-title-Proj-WBS').text()) {
+            if(val === $('.show-title-Proj-WBS span').text()) {
                 $('input#file-inv').prop('disabled', false);
             } else {
                 $('input#file-inv').prop('disabled', true);
@@ -491,7 +491,7 @@
         });
         checkRec.on('keyup', function() {
             var val = $(this).val();
-            if(val === $('.show-title-Proj-WBS').text()) {
+            if(val === $('.show-title-Proj-WBS span').text()) {
                 $('input#file-rec').prop('disabled', false);
             } else {
                 $('input#file-rec').prop('disabled', true);
@@ -499,7 +499,7 @@
         });
         checkOut.on('keyup', function() {
             var val = $(this).val();
-            if(val === $('.show-title-Proj-WBS').text()) {
+            if(val === $('.show-title-Proj-WBS span').text()) {
                 $('input#file-out').prop('disabled', false);
             } else {
                 $('input#file-out').prop('disabled', true);

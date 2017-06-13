@@ -4,7 +4,7 @@
    $sql = "INSERT INTO project_map (ProjWBS, ProjName, LastUpdate) VALUES ('" . $_GET['ProjWBS'] . '\',\'' . $_GET['ProjName'] . '\',NOW())';
    $conn->query($sql);
 
-   $sql = "CREATE TABLE " . $_GET['ProjWBS'] . "__tb_inv (
+   $sql = "CREATE TABLE `" . $_GET['ProjWBS'] . "_tb_inv` (
       ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       InvNo VARCHAR(50) NOT NULL,
       InvName VARCHAR(1000) NOT NULL,
@@ -19,7 +19,7 @@
       echo $conn->error;
       die();
    }
-   $sql = "CREATE TABLE " . $_GET['ProjWBS'] . "__tb_out (
+   $sql = "CREATE TABLE `" . $_GET['ProjWBS'] . "__tb_out` (
       ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       OutDate DATE NOT NULL,
       OutNo CHAR(8) NOT NULL,
@@ -38,7 +38,7 @@
       echo $conn->error;
       die();
    }
-   $sql = "CREATE TABLE " . $_GET['ProjWBS'] . "__tb_rec (
+   $sql = "CREATE TABLE `" . $_GET['ProjWBS'] . "__tb_rec` (
       ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       RecDate DATE NOT NULL,
       RecNo CHAR(8) NOT NULL,

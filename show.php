@@ -61,7 +61,7 @@
 					<div class="cell">ที่เก็บสินค้า</div>
 	    		</div>
 				<?php
-					$sql = 'SELECT * FROM ' . $_GET['ProjWBS'] . '__tb_inv';
+					$sql = 'SELECT * FROM `' . $_GET['ProjWBS'] . '__tb_inv`';
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) {
 					// output data of each row
@@ -110,7 +110,7 @@
 					<div class="cell">ที่เก็บสินค้า</div>
 	    		</div>
 				 <?php
-					$sql = 'SELECT * FROM ' . $_GET['ProjWBS'] . '__tb_rec';
+					$sql = 'SELECT * FROM `' . $_GET['ProjWBS'] . '__tb_rec`';
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) {
 					// output data of each row
@@ -160,7 +160,7 @@
 					<div class="cell">ที่เก็บสินค้า</div>
 	    		</div>
 				 <?php
-					$sql = 'SELECT * FROM ' . $_GET['ProjWBS'] . '__tb_out';
+					$sql = 'SELECT * FROM `' . $_GET['ProjWBS'] . '__tb_out`';
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) {
 					// output data of each row

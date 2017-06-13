@@ -2,7 +2,7 @@
 $has_page = false;
 include 'check_connection.php';
 $table = $_GET['table'];
-$sql = 'SELECT * FROM ' . $_GET['ProjWBS'] . '__' . $table;
+$sql = 'SELECT * FROM `' . $_GET['ProjWBS'] . '__' . $table . '`';
 
 if(isset($_GET['q'])) {
     $q = json_decode($_GET['q']);

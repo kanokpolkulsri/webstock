@@ -87,6 +87,7 @@ div.login {
   background-color: #fff;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 5px;
 }
 
 /*@media (max-width: 1000px) {
@@ -172,7 +173,8 @@ ul.login {
   border-width: 1px;
   font-size: 14px;
   color: #545454;
-  margin-left: 110px;
+  margin-left: 140px;
+  margin-bottom: 20px;
 }
 
 .btn-submit:hover {
@@ -204,6 +206,14 @@ ul.login {
 }
 
 .btn-cate-userAndLogout {
+  text-align: right;
+}
+
+.btn-show-cateAndLogout {
+  text-align: right;
+}
+
+.btn-member-cateAndLogout {
   text-align: right;
 }
 
@@ -532,6 +542,7 @@ ul.login {
 .login-fail {
    text-align: center;
    color: red;
+   margin-bottom: 20px;
 }
 
 .button-user {

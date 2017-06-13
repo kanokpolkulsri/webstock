@@ -13,6 +13,16 @@
 	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 </head>
 <body>
+
+
+	<!-- ตรงนี้เพิ่มส่วนของปุ่มกด กลับไปหน้าหลักกับออกจากระบบ -->
+	<div class="btn-member-cateAndLogout">
+		<a href=" ............ "><button class="button-back-cate">หน้าหลัก</button></a>
+		<a href="./logout.php"><button class="button-user">ออกจากระบบ</button></a>	
+	</div>
+
+
+
 	<p class="header-member">USER Management</p>
 	<div class="mode-member">
 		<div class="button-mode-add">
@@ -99,7 +109,7 @@
 	/*ส่วนตรงลบสมาชิก*/
 	//ถ้าusernameอะไรมันเหมือนกันก็ลบ
 	var delUserInput = $('.del-user-input');
-	var buttonShowDeleteUser = $('.button-show-delete-user');
+	var buttonShowDeleteUser = $('.button-mode-delete');
 	var checkShowDeleteUser = false;
 	delUserInput.hide();
 	buttonShowDeleteUser.click(function(){ //เปิดปิดเฉยๆ
@@ -134,7 +144,7 @@
 
 	/*เอาข้อมูลมาประกาศไว้*/
 		var memberShowAllData = $('.member-show-all-data');
-		var buttonMemberShowAllData = $('.button-show-member-data');
+		var buttonMemberShowAllData = $('.button-mode-show');
 		var checkMemberShowAllData = false;
 		memberShowAllData.hide();
 		buttonMemberShowAllData.click(function(){
@@ -154,7 +164,7 @@
 
 
 	/*เพิ่มใหม่ตรง เพิ่มสมาชิก*/
-		var buttonShowAddUser = $('.button-show-add-user');
+		var buttonShowAddUser = $('.button-mode-add');
 		var allRowUser = $('.add-user-input');
 		var checkButtonAddUser = false;
 		allRowUser.hide();

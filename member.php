@@ -156,7 +156,7 @@
       $.post('./delete_user.php', {username: delUsername.val(), password: delPass1.val(), name: delName.val(),
           phone: delPhone.val(), company: delCompany.val(), position: delPosition.val(), status: delStatus.val().toLowerCase()}, function(data) {
          if(data !== 'success') {
-            alert('Data does not match. haha');
+            alert('Data does not match.');
          } else {
              location.reload();
          }

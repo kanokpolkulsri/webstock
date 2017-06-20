@@ -61,17 +61,28 @@
 					<div class="cell">ที่เก็บสินค้า</div>
 	    		</div>
 				<?php
+                    $col_types = array();
+                    $q = $conn->query('DESCRIBE `' . $_GET['ProjWBS'] . '__tb_inv`');
+                    while($row = $q->fetch_assoc()) {
+                        array_push($col_types, $row['Type']);
+                    }
 					$sql = 'SELECT * FROM `' . $_GET['ProjWBS'] . '__tb_inv`';
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) {
 					// output data of each row
 						while($row = $result->fetch_assoc()) {
 							echo '<div class="row content">';
+                            $i = 0;
 							foreach($row as $key => $val) {
 								if($key == 'ID' || $key == 'LastUpdate') {
+                                    $i++;
 									continue;
 								}
+                                if(strpos($col_types[$i], 'float') !== false) {
+                                    $val = number_format($val, 2);
+                                }
 								echo '<div class="cell">' . $val . '</div>';
+                                $i++;
 							}
 							echo '</div>';
 						}
@@ -110,17 +121,28 @@
 					<div class="cell">ที่เก็บสินค้า</div>
 	    		</div>
 				 <?php
+                     $col_types = array();
+                     $q = $conn->query('DESCRIBE `' . $_GET['ProjWBS'] . '__tb_rec`');
+                     while($row = $q->fetch_assoc()) {
+                         array_push($col_types, $row['Type']);
+                     }
 					$sql = 'SELECT * FROM `' . $_GET['ProjWBS'] . '__tb_rec`';
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) {
 					// output data of each row
 						while($row = $result->fetch_assoc()) {
 							echo '<div class="row content">';
+                            $i = 0;
 							foreach($row as $key => $val) {
-								if($key == 'ID' || $key == 'LastUpdate') {
+                                if($key == 'ID' || $key == 'LastUpdate') {
+                                    $i++;
 									continue;
 								}
+                                if(strpos($col_types[$i], 'float') !== false) {
+                                    $val = number_format($val, 2);
+                                }
 								echo '<div class="cell">' . $val . '</div>';
+                                $i++;
 							}
 							echo '</div>';
 						}
@@ -160,17 +182,28 @@
 					<div class="cell">ที่เก็บสินค้า</div>
 	    		</div>
 				 <?php
+                     $col_types = array();
+                     $q = $conn->query('DESCRIBE `' . $_GET['ProjWBS'] . '__tb_out`');
+                     while($row = $q->fetch_assoc()) {
+                         array_push($col_types, $row['Type']);
+                     }
 					$sql = 'SELECT * FROM `' . $_GET['ProjWBS'] . '__tb_out`';
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) {
 					// output data of each row
 						while($row = $result->fetch_assoc()) {
 							echo '<div class="row content">';
+                            $i = 0;
 							foreach($row as $key => $val) {
-								if($key == 'ID' || $key == 'LastUpdate') {
+                                if($key == 'ID' || $key == 'LastUpdate') {
+                                    $i++;
 									continue;
 								}
+                                if(strpos($col_types[$i], 'float') !== false) {
+                                    $val = number_format($val, 2);
+                                }
 								echo '<div class="cell">' . $val . '</div>';
+                                $i++;
 							}
 							echo '</div>';
 						}

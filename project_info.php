@@ -56,14 +56,25 @@ if(isset($_GET['q'])) {
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row
+    $col_types = array();
+    $q = $conn->query('DESCRIBE `' . $_GET['ProjWBS'] . '__' . $table . '`');
+    while($row = $q->fetch_assoc()) {
+        array_push($col_types, $row['Type']);
+    }
     $output = "[";
     while($row = $result->fetch_assoc()) {
         $output .= '[';
+        $i = 0;
         foreach($row as $key => $val) {
             if($key == 'ID' || $key == 'LastUpdate') {
+                $i++;
                 continue;
             }
+            if(strpos($col_types[$i], 'float') !== false) {
+                $val = number_format($val, 2);
+            }
             $output .= '"' . $val . '",';
+            $i++;
         }
         $output = substr($output, 0, strlen($output)-1);
         $output .= '],';

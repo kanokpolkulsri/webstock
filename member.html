@@ -17,7 +17,8 @@
 
 	<!-- ตรงนี้เพิ่มส่วนของปุ่มกด กลับไปหน้าหลักกับออกจากระบบ -->
 	<div class="btn-member-cateAndLogout">
-		<a href="./index.php"><button class="button-back-cate">หน้าหลัก</button></a>
+		<img src="./logo.jpg" class="logo"/>
+		<a href="./index.php"><button class="button-user">หน้าหลัก</button></a>
 		<a href="./logout.php"><button class="button-user">ออกจากระบบ</button></a>	
 	</div>
 
@@ -37,27 +38,26 @@
 	</div>
 
 	<div class="add-user">
-		<div class="add-user-input">
-		<p> เพิ่มสมาชิก </p>
+		<div class="add-user-input" style="font-size: 14px">
+		<p style="font-size: 16px"> เพิ่มสมาชิก </p>
 			<ul class="all-row-user">
-				<li class="row-user">Username : <input type="input" name="locate" class="input-regis-username"></li>
-				<li class="row-user">Password : <input type="input" name="locate" class="input-regis-pass1"></li>
-				<li class="row-user">Confirm Password : <input type="input" name="locate" class="input-regis-pass2"></li>
-				<li class="row-user">Name : <input type="input" name="locate" class="input-regis-name"></li>
-				<li class="row-user">Phone : <input type="input" name="locate" class="input-regis-phone"></li>
-				<li class="row-user">Company : <input type="input" name="locate" class="input-regis-company"></li>
-				<li class="row-user">Position : <input type="input" name="locate" class="input-regis-position"></li>
-				<li class="row-user"><button class="input-regis-select-admin"></button> admin</li>
-				<li class="row-user"><button class="input-regis-select-user"></button> user</li>
-				<br>
-				<button class="button-add-user">เพิ่มสมาชิก</button>
+				<li class="row-user"><input type="input" id="add-username" class="row-user-input"/></li>
+				<li class="row-user"><input type="password" id="add-password" class="row-user-input"/></li>
+				<li class="row-user"><input type="password" id="add-password2" class="row-user-input"/></li>
+				<li class="row-user"><input type="input" id="add-name" class="row-user-input"/></li>
+				<li class="row-user"><input type="input" id="add-phone" class="row-user-input"/></li>
+				<li class="row-user"><input type="input" id="add-company" class="row-user-input"/></li>
+				<li class="row-user"><input type="input" id="add-position" class="row-user-input"/></li>
+				<li class="row-user"><input type="radio" id="add-status-admin" class="input-regis-select-admin"/> admin</li>
+				<li class="row-user"><input type="radio" id="add-status-user" class="input-regis-select-user"/> user</li>
+				<button class="button-add-user" style="font-size: 16px;">เพิ่มสมาชิก</button>
 			</ul>
 		</div>
 	</div>
 
 	<div class="member-data">
 		<div class="member-show-all-data">
-		<p style="margin-left: 30px; margin-bottom: -20px">ข้อมูลสมาชิก</p>
+		<p style="margin-left: 30px; margin-bottom: -20px; font-size: 16px;"">ข้อมูลสมาชิก</p>
 			<div class="wrapper">
 				<div class="table-user">
 					<div class="row header blue">
@@ -94,20 +94,24 @@
 
 	<div class="member-delete-user">
 		<div class="del-user-input">
-			<p style="margin-left: 30px"> ลบสมาชิก</p>
+			<p style="margin-left: 30px; font-size: 16px;"> ลบสมาชิก</p>
 			<ul class="del-all-row-user">
-				<li class="row-user">Username : <input type="input" name="locate" class="input-del-username"></li>
-				<li class="row-user">Name : <input type="input" name="locate" class="input-del-name"></li>
-				<li class="row-user">Company : <input type="input" name="locate" class="input-del-company"></li>
-				<br>
-				<button class="button-del-user">ลบสมาชิก</button>
+				<li class="row-user"><input type="input" id="del-username" class="row-user-input"/></li>
+				<li class="row-user"><input type="input" id="del-password" class="row-user-input"/></li>
+				<li class="row-user"><input type="input" id="del-password2" class="row-user-input"/></li>
+				<li class="row-user"><input type="input" id="del-name" class="row-user-input"/></li>
+				<li class="row-user"><input type="input" id="del-phone" class="row-user-input"/></li>
+				<li class="row-user"><input type="input" id="del-company" class="row-user-input"/></li>
+				<li class="row-user"><input type="input" id="del-position" class="row-user-input"/></li>
+				<li class="row-user"><input type="input" id="del-status" class="row-user-input"/></li>
+				<button class="button-del-user" style="font-size: 16px;">ลบสมาชิก</button>
 			</ul>
 		</div>
 	</div>
 
 	<script type="text/javascript">
 	/*ส่วนตรงลบสมาชิก*/
-	//ถ้าusernameอะไรมันเหมือนกันก็ลบ
+
 	var delUserInput = $('.del-user-input');
 	var buttonShowDeleteUser = $('.button-mode-delete');
 	var checkShowDeleteUser = false;
@@ -125,12 +129,26 @@
 			delUserInput.hide();
 		}
 	});
-	var delUsername = $('.input-del-username');
-	var delName = $('.input-del-name');
-	var delCompany = $('.input-del-company');
+
+	document.getElementById("del-username").placeholder = "Username";
+	document.getElementById("del-password").placeholder = "Password";
+	document.getElementById("del-password2").placeholder = "Confirm Password";
+	document.getElementById("del-name").placeholder = "Name";
+	document.getElementById("del-phone").placeholder = "Phone";
+	document.getElementById("del-company").placeholder = "Company";
+	document.getElementById("del-position").placeholder = "Position";
+	document.getElementById("del-status").placeholder = "Admin / User";
+	var delUsername = $('#del-username');
+	var delPass1 = $('#del-password');
+	var delPass2 = $('#del-password2');
+	var delName = $('#del-name');
+	var delPhone = $('#del-phone');
+	var delCompany = $('#del-company');
+	var delPosition = $('#del-position');
+	var delStatus = $('#del-status');
 	var buttonDeleteUser = $('.button-del-user');
+
 	buttonDeleteUser.click(function(){
-		//ถ้ากดปุ่มนี้ก็เอาค่า delUsername.val() , delName.val() , delCompany.val()
       $.post('./delete_user.php', {username: delUsername.val(), name: delName.val(), company: delCompany.val()}, function(data) {
          if(data !== 'success') {
             alert(data);
@@ -167,7 +185,7 @@
 		var buttonShowAddUser = $('.button-mode-add');
 		var allRowUser = $('.add-user-input');
 		var checkButtonAddUser = false;
-		allRowUser.hide();
+		// allRowUser.hide();
 		buttonShowAddUser.click(function(){
 			if(!checkButtonAddUser){
 				// buttonShowAddUser.addClass('cate-btn-active');
@@ -183,29 +201,34 @@
 				allRowUser.hide();
 			}
 		});
-		var regisUsername = $('.input-regis-username');
-		var regisPass1 = $('.input-regis-pass1');
-		var regisPass2 = $('.input-regis-pass2');
-		var regisName = $('.input-regis-name');
-		var regisPhone = $('.input-regis-phone');
-		var regisCompany = $('.input-regis-company');
-		var regisPosition = $('.input-regis-position');
+
+		/*ปามเพิ่มเอง*/
+		document.getElementById("add-username").placeholder = "Username";
+		document.getElementById("add-password").placeholder = "Password";
+		document.getElementById("add-password2").placeholder = "Confirm Password";
+		document.getElementById("add-name").placeholder = "Name";
+		document.getElementById("add-phone").placeholder = "Phone";
+		document.getElementById("add-company").placeholder = "Company";
+		document.getElementById("add-position").placeholder = "Position";
+		var regisUsername = $('#add-username');
+		var regisPass1 = $('#add-password');
+		var regisPass2 = $('#add-password2');
+		var regisName = $('#add-name');
+		var regisPhone = $('#add-phone');
+		var regisCompany = $('#add-company');
+		var regisPosition = $('#add-position');
 		var buttonAddUser = $('.button-add-user');
 		var buttonSelectAdmin = $('.input-regis-select-admin');
 		var buttonSelectUser = $('.input-regis-select-user');
-		var checkSelectAdmin = true;
 		buttonSelectAdmin.click(function(){
-			checkSelectAdmin = true;
-			buttonSelectAdmin.addClass('member-btn-active');
-			buttonSelectUser.removeClass('member-btn-active');
+			document.getElementById("add-status-admin").checked = true;
+			document.getElementById("add-status-user").checked = false;
 		});
 		buttonSelectUser.click(function(){
-			checkSelectAdmin = false;;
-			buttonSelectUser.addClass('member-btn-active');
-			buttonSelectAdmin.removeClass('member-btn-active');
+			document.getElementById("add-status-admin").checked = false;
+			document.getElementById("add-status-user").checked = true;
 		});
 		buttonAddUser.click(function(){
-			//ก็เอาค่าจาก regis.. ไปใส่ได้เลย
          if(regisPass1.val() !== regisPass2.val()) {
             alert('Passwords do not match.')
             return;

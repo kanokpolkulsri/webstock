@@ -24,22 +24,35 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body class="login">
-      <p class="login-title">WELCOME, TMDSEO4</p>
+    <div class="header-logo"><img src="./logo.jpg" class="logo"/></div><br>
+      <p class="login-title">Welcome to Thaimeidensha Co., Ltd.</p>
+      <p class="login-title-blue">Thaimeidensha Stock System</p>
+      <div class="test">
         <div class="login">
            <form class="" action="./login.php" method="post">
             <ul class='login'>
-                    <li>USERNAME <input type='text' name='username' class="login-usr"></li>
-                    <li>PASSWORD  <input type='password' name='password' class="login-pass"></li>
+              <p>Please Login</p  >
+              <li><input type='text' name='username' class="login-usr" id="login-usr"></li>
+              <li><input type='password' name='password' class="login-pass" id="login-pass"></li>
+              <br><input type="submit" value="Login" class="btn-submit"/>
             </ul>
-            <br><input type="submit" value="SIGN IN" class="btn-submit"/>
+
+            <!-- <br><input type="submit" value="SIGN IN" class="btn-submit"/> -->
             <?php
                if(isset($_GET['login_failed']) && $_GET['login_failed'] == 1) {
-                  echo '<br><p class="login-fail">Wrong username or password.</p>';
+                  echo '<p class="login-fail">Wrong username or password.</p>';
               } else if(isset($_GET['session_expired']) && $_GET['session_expired'] == 1) {
-                  echo '<br><p class="login-fail">Session expired.</p>';
+                  echo '<p class="login-fail">Session expired.</p>';
               }
             ?>
             </form>
         </div>
+      </div>
+
+      <script type="text/javascript">
+      document.getElementById("login-usr").placeholder = "username";
+      document.getElementById("login-pass").placeholder = "password";
+      </script>
+
     </body>
 </html>

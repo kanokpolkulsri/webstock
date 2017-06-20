@@ -19,7 +19,7 @@
 	<div class="btn-member-cateAndLogout">
 		<img src="./logo.jpg" class="logo"/>
 		<a href="./index.php"><button class="button-user">หน้าหลัก</button></a>
-		<a href="./logout.php"><button class="button-user">ออกจากระบบ</button></a>	
+		<a href="./logout.php"><button class="button-user">ออกจากระบบ</button></a>
 	</div>
 
 
@@ -27,13 +27,13 @@
 	<p class="header-member">USER Management</p>
 	<div class="mode-member">
 		<div class="button-mode-add">
-			<button class="button-show-add-user">+</button> เพิ่มสมาชิก 
+			<button class="button-show-add-user">+</button> เพิ่มสมาชิก
 		</div>
 		<div class="button-mode-show">
-			<button class="button-show-member-data">+</button> ข้อมูลสมาชิก 
+			<button class="button-show-member-data">+</button> ข้อมูลสมาชิก
 		</div>
 		<div class="button-mode-delete">
-			<button class="button-show-delete-user">+</button> ลบสมาชิก 
+			<button class="button-show-delete-user">+</button> ลบสมาชิก
 		</div>
 	</div>
 
@@ -57,7 +57,7 @@
 
 	<div class="member-data">
 		<div class="member-show-all-data">
-		<p style="margin-left: 30px; margin-bottom: -20px; font-size: 16px;"">ข้อมูลสมาชิก</p>
+		<p style="margin-left: 30px; margin-bottom: -20px; font-size: 16px;">ข้อมูลสมาชิก</p>
 			<div class="wrapper">
 				<div class="table-user">
 					<div class="row header blue">
@@ -149,11 +149,16 @@
 	var buttonDeleteUser = $('.button-del-user');
 
 	buttonDeleteUser.click(function(){
-      $.post('./delete_user.php', {username: delUsername.val(), name: delName.val(), company: delCompany.val()}, function(data) {
+        if(delPass1.val() !== delPass2.val() || delUsername.val() === '' || delPass1.val() === '' || delStatus.val() === '') {
+            alert('Data does not match.');
+            return;
+        }
+      $.post('./delete_user.php', {username: delUsername.val(), password: delPass1.val(), name: delName.val(),
+          phone: delPhone.val(), company: delCompany.val(), position: delPosition.val(), status: delStatus.val().toLowerCase()}, function(data) {
          if(data !== 'success') {
-            alert(data);
+            alert('Data does not match. haha');
          } else {
-            location.reload();
+             location.reload();
          }
       });
 	});
@@ -234,7 +239,7 @@
             return;
          }
          $.post('./add_user.php', {username: regisUsername.val(), password: regisPass1.val(), name: regisName.val(),
-                  phone: regisPhone.val(), company: regisCompany.val(), position: regisPosition.val(), state: (checkSelectAdmin ? 'admin' : 'user')}, function(data) {
+                  phone: regisPhone.val(), company: regisCompany.val(), position: regisPosition.val(), state: (document.getElementById("add-status-admin").checked ? 'admin' : 'user')}, function(data) {
             if(data !== 'success') {
                alert(data);
             } else {

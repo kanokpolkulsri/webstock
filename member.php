@@ -133,7 +133,14 @@
 	var searchPosition = $('#member-search-position');
 	var searchStatus = $('#member-search-status');
 		//ปาม //แล้วตรงนี้ก็เอาตัวแปร .val() ไปใช้
-
+    // จัดการหาข้อมูล user
+    $('.member-show-all-data input').on('keyup paste', function() {
+        var sending_data = {username: searchUsername.val(), name: searchName.val(), phone: searchPhone.val(), company: searchCompany.val()
+            , position: searchPosition.val(), status: searchStatus.val()};
+        $.post('./get_user.php', sending_data, function(data) {
+            alert(data);
+        });
+    });
 
 
 

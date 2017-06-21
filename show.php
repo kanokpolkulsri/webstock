@@ -18,7 +18,7 @@
 
 	<!-- ตรงนี้เพิ่มส่วนของปุ่มกด กลับไปหน้าหลักกับออกจากระบบ -->
 	<div class="btn-show-cateAndLogout">
-		<a href="./index.php"><button class="button-back-cate">หน้าหลัก</button></a>
+		<a href="./index.php"><button class="button-user">หน้าหลัก</button></a>
 		<a href="./logout.php"><button class="button-user">ออกจากระบบ</button></a>
 	</div>
 
@@ -51,7 +51,7 @@
 		</div>
 		<div class="wrapper">
 			<div class="table-inv tb_inv">
-				<div class="row header green">
+				<div class="row header blue">
 					<div class="cell">รหัสสินค้า</div>
 					<div class="cell">ชื่อสินค้า</div>
 					<div class="cell">จำนวน</div>
@@ -108,7 +108,7 @@
 		</div>
 		<div class="wrapper">
 			<div class="table-rec tb_rec">
-				<div class="row header green">
+				<div class="row header blue">
 					<div class="cell">วันที่</div>
 					<div class="cell">รหัสสินค้า</div>
 					<div class="cell">ชื่อสินค้า</div>
@@ -168,7 +168,7 @@
 		</div>
 		<div class="wrapper">
 			<div class="table-out tb_out">
-				<div class="row header green">
+				<div class="row header blue">
 					<div class="cell">วันที่</div>
 					<div class="cell">รหัสสินค้า</div>
 					<div class="cell">ชื่อสินค้า</div>

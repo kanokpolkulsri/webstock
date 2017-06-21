@@ -58,6 +58,15 @@
 	<div class="member-data">
 		<div class="member-show-all-data">
 		<p style="margin-left: 30px; margin-bottom: -20px; font-size: 16px;">ข้อมูลสมาชิก</p>
+		<br>
+		<div class="member-cell-user">
+			<div class="cell-user">Username : <input id="member-search-username"/></div>
+			<div class="cell-user">Name : <input id="member-search-name"/></div>
+			<div class="cell-user">Phone : <input id="member-search-phone"/></div>
+			<div class="cell-user">Company : <input id="member-search-company"/></div>
+			<div class="cell-user">Position : <input id="member-search-position"/></div>
+			<div class="cell-user">Status : <input id="member-search-status"/></div>
+		</div>
 			<div class="wrapper">
 				<div class="table-user">
 					<div class="row header blue">
@@ -66,7 +75,7 @@
 						<div class="cell">Phone</div>
 						<div class="cell">Company</div>
 						<div class="cell">Position</div>
-						<div class="cell">State</div>
+						<div class="cell">Status</div>
 		    		</div>
                <?php
                   $sql = 'SELECT * FROM users';
@@ -110,6 +119,29 @@
 	</div>
 
 	<script type="text/javascript">
+	/*สำหรับการค้นหาข้อมูลสมาชิก โชว์อัตโนมัติ โดยที่อิงข้อมูลจากตัวแปรต่อไปนี้*/
+	document.getElementById("member-search-username").placeholder = "Username";
+	document.getElementById("member-search-name").placeholder = "Name";
+	document.getElementById("member-search-phone").placeholder = "Phone";
+	document.getElementById("member-search-company").placeholder = "Company";
+	document.getElementById("member-search-position").placeholder = "Position";
+	document.getElementById("member-search-status").placeholder = "Status";
+	var searchUsername = $('#member-search-username');
+	var searchName = $('#member-search-name');
+	var searchPhone = $('#member-search-phone');
+	var searchCompany = $('#member-search-company');
+	var searchPosition = $('#member-search-position');
+	var searchStatus = $('#member-search-status');
+		//ปาม //แล้วตรงนี้ก็เอาตัวแปร .val() ไปใช้
+
+
+
+
+
+
+
+
+
 	/*ส่วนตรงลบสมาชิก*/
 
 	var delUserInput = $('.del-user-input');

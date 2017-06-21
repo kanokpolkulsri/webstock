@@ -138,7 +138,17 @@
         var sending_data = {username: searchUsername.val(), name: searchName.val(), phone: searchPhone.val(), company: searchCompany.val()
             , position: searchPosition.val(), status: searchStatus.val()};
         $.post('./get_user.php', sending_data, function(data) {
-            alert(data);
+            // alert(data);
+            var json = JSON.parse(data);
+            $('div.table-user div.row:not(:first-child)').empty();
+            for(var i = 0; i < json.length; i++) {
+                var row = '<div class="row">';
+                for(var j = 0; j < json[i].length; j++) {
+                    row += '<div class="cell">' + json[i][j] + '</div>';
+                }
+                row += '</div>';
+                $('div.table-user').append(row);
+            }
         });
     });
 

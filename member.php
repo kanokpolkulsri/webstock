@@ -160,6 +160,14 @@
 			checkShowDeleteUser = false;
 			delUserInput.hide();
 		}
+		delUsername.val('');
+		delPass1.val('');
+		delPass2.val('');
+		delName.val('');
+		delPhone.val('');
+		delCompany.val('');
+		delPosition.val('');
+		delStatus.val('');
 	});
 
 	document.getElementById("del-username").placeholder = "Username";
@@ -169,7 +177,7 @@
 	document.getElementById("del-phone").placeholder = "Phone";
 	document.getElementById("del-company").placeholder = "Company";
 	document.getElementById("del-position").placeholder = "Position";
-	document.getElementById("del-status").placeholder = "Admin / User";
+	document.getElementById("del-status").placeholder = "Admin/User";
 	var delUsername = $('#del-username');
 	var delPass1 = $('#del-password');
 	var delPass2 = $('#del-password2');
@@ -214,6 +222,12 @@
 				checkShowDeleteUser = false;
 				memberShowAllData.hide();
 			}
+			searchUsername.val('');
+			searchName.val('');
+			searchPhone.val('');
+			searchCompany.val('');
+			searchPosition.val('');
+			searchStatus.val('');
 		});
 		var useradd = $('.table-user');
 
@@ -237,6 +251,13 @@
 				checkShowDeleteUser = false;
 				allRowUser.hide();
 			}
+			regisUsername.val('');
+	        regisPass1.val('');
+	        regisPass2.val('');
+	        regisName.val('');
+	        regisPhone.val('');
+	        regisCompany.val('');
+	        regisPosition.val('');
 		});
 
 		/*ปามเพิ่มเอง*/

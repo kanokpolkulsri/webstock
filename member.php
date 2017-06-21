@@ -59,14 +59,12 @@
 		<div class="member-show-all-data">
 		<p style="margin-left: 30px; margin-bottom: -20px; font-size: 16px;">ข้อมูลสมาชิก</p>
 		<br>
-		<div class="member-cell-user">
-			<div class="cell-user">Username : <input id="member-search-username"/></div>
-			<div class="cell-user">Name : <input id="member-search-name"/></div>
-			<div class="cell-user">Phone : <input id="member-search-phone"/></div>
-			<div class="cell-user">Company : <input id="member-search-company"/></div>
-			<div class="cell-user">Position : <input id="member-search-position"/></div>
-			<div class="cell-user">Status : <input id="member-search-status"/></div>
-		</div>
+			<input id="member-search-username" style="margin-left: 40px; font-size: 14px"/>
+			<input id="member-search-name" style="margin-left: 40px; font-size: 14px"/>
+			<input id="member-search-phone" style="margin-left: 40px; font-size: 14px"/>
+			<input id="member-search-company" style="margin-left: 40px; font-size: 14px"/>
+			<input id="member-search-position" style="margin-left: 40px; font-size: 14px"/>
+			<input id="member-search-status" style="margin-left: 40px; font-size: 14px"/>
 			<div class="wrapper">
 				<div class="table-user">
 					<div class="row header blue">

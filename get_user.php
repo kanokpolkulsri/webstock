@@ -20,7 +20,7 @@ foreach($data as $key => $val) {
         $found = true;
         $query .= ' WHERE';
     }
-    $query .= ' ' . $key . ' LIKE "%' . $val . '%"';
+    $query .= ' ' . $key . ' LIKE "' . $val . '%"';
 }
 $result = $conn->query($query);
 if($result->num_rows > 0) {

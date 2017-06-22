@@ -17,6 +17,7 @@ if(isset($_GET['q'])) {
             }
             $sql .= ' InvName LIKE "'.$q[1].'%"';
         }
+        $sql .= ' ORDER BY InvNo';
     } else if($table == 'tb_rec' && ($q[0] != '' || $q[1] != '' || $q[2] != '')) {
         $sql .= ' WHERE';
         if($q[0] != '') {
@@ -34,6 +35,7 @@ if(isset($_GET['q'])) {
             }
             $sql .= ' RecName LIKE "'.$q[2].'%"';
         }
+        $sql .= ' ORDER BY RecDate';
     } else if($table == 'tb_out' && ($q[0] != '' || $q[1] != '' || $q[2] != '')) {
         $sql .= ' WHERE';
         if($q[0] != '') {
@@ -51,6 +53,7 @@ if(isset($_GET['q'])) {
             }
             $sql .= ' OutName LIKE "'.$q[2].'%"';
         }
+        $sql .= 'ORDER BY OutDate';
     }
 }
 $result = $conn->query($sql);

@@ -126,7 +126,7 @@
                      while($row = $q->fetch_assoc()) {
                          array_push($col_types, $row['Type']);
                      }
-					$sql = 'SELECT * FROM `' . $_GET['ProjWBS'] . '__tb_rec`';
+					$sql = 'SELECT * FROM `' . $_GET['ProjWBS'] . '__tb_rec` ORDER BY RecDate';
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) {
 					// output data of each row
@@ -187,7 +187,7 @@
                      while($row = $q->fetch_assoc()) {
                          array_push($col_types, $row['Type']);
                      }
-					$sql = 'SELECT * FROM `' . $_GET['ProjWBS'] . '__tb_out`';
+					$sql = 'SELECT * FROM `' . $_GET['ProjWBS'] . '__tb_out` ORDER BY OutDate';
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) {
 					// output data of each row

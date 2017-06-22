@@ -39,6 +39,19 @@
 		<button class="show-btn-out">ประวัติการเบิกสินค้า</button>
 	</div>
 	<div class="show-all-data-inv">
+        <p style="margin-left: 40px;">
+            Lastest update:
+            <?php
+            $sql = 'SELECT DATE_FORMAT(LastUpdate, "%d/%m/%Y %H:%i") AS Date FROM `' . $_GET['ProjWBS'] . '__tb_inv`';
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                echo $row['Date'];
+            } else {
+                echo '-';
+            }
+            ?>
+        </p>
 		<div class="input-search-inv">
 			รหัสสินค้า : <input type="input" name="locate" class="input-search-inv-no">
 			ชื่อสินค้า : <input type="input" name="locate" class="input-search-inv-name">
@@ -95,6 +108,19 @@
 	</div>
 
 	<div class="show-all-history-rec">
+        <p style="margin-left: 40px;">
+            Lastest update:
+            <?php
+            $sql = 'SELECT DATE_FORMAT(LastUpdate, "%d/%m/%Y %H:%i") AS Date FROM `' . $_GET['ProjWBS'] . '__tb_rec`';
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                echo $row['Date'];
+            } else {
+                echo '-';
+            }
+            ?>
+        </p>
 		<div class="input-search-history-rec">
 			วันที่ : <input type="date" name="locate" class="input-search-history-rec-date">
 			รหัสสินค้า : <input type="input" name="locate" class="input-search-history-rec-no">
@@ -155,6 +181,19 @@
 	</div>
 
 	<div class="show-all-history-out">
+        <p style="margin-left: 40px;">
+            Lastest update:
+            <?php
+            $sql = 'SELECT DATE_FORMAT(LastUpdate, "%d/%m/%Y %H:%i") AS Date FROM `' . $_GET['ProjWBS'] . '__tb_out`';
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                echo $row['Date'];
+            } else {
+                echo '-';
+            }
+            ?>
+        </p>
 		<div class="input-search-history-out">
 			วันที่ : <input type="date" name="locate" class="input-search-history-out-date">
 			รหัสสินค้า : <input type="input" name="locate" class="input-search-history-out-no">

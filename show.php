@@ -66,7 +66,7 @@
                     while($row = $q->fetch_assoc()) {
                         array_push($col_types, $row['Type']);
                     }
-					$sql = 'SELECT * FROM `' . $_GET['ProjWBS'] . '__tb_inv`';
+					$sql = 'SELECT * FROM `' . $_GET['ProjWBS'] . '__tb_inv` ORDER BY InvNo';
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) {
 					// output data of each row

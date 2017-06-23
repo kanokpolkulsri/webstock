@@ -42,7 +42,10 @@
 		<div class="cate-content-right">
 			<div class="cate-data-all">
 				<div class="cate-data-search">
-					<u style="font-size: 16px";>ค้นหา</u>&nbsp;&nbsp;&nbsp;&nbsp; ชื่อโครงการ : <input type="input" class="cate-data-search-name"/> &nbsp;&nbsp;&nbsp;&nbsp; WBS NO. : <input type="input" class="cate-data-search-wbs"/>&nbsp;&nbsp;&nbsp;&nbsp;<button class="cate-data-search-btn">ค้นหา</button>
+					<u style="font-size: 16px";>ค้นหา</u>&nbsp;&nbsp;&nbsp;&nbsp; ชื่อโครงการ : <input type="input" class="cate-data-search-name"/>
+                    &nbsp;&nbsp;&nbsp;&nbsp; WBS NO. : <input type="input" class="cate-data-search-wbs"/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <!-- <button class="cate-data-search-btn">ค้นหา</button> -->
 				</div>
 				<div class="location"></div>
 			</div>
@@ -74,18 +77,24 @@
 
 	<script type="text/javascript">
 		/*
-			ตรงนี้เพิ่มเติมมาของส่วนที่จะค้นหาชื่อ และเลข WBS 
+			ตรงนี้เพิ่มเติมมาของส่วนที่จะค้นหาชื่อ และเลข WBS
 		*/
-		var buttonSearch = $('.cate-data-search-btn');
+		// var buttonSearch = $('.cate-data-search-btn');
 		var inputSearchName = $('.cate-data-search-name');
 		var inputSearchWBS = $('.cate-data-search-wbs');
-		buttonSearch.click(function(){
+		$('.cate-data-search-name, .cate-data-search-wbs').on('change paste keyup', function(){
 
-			//กดค้นหาตรงนี้
-
-			inputSearchName.val('');
-			inputSearchWBS.val('');
-
+			// inputSearchName.val('');
+			// inputSearchWBS.val('');
+            $.get('./get_project.php?ProjName='+inputSearchName.val()+'&ProjWBS='+inputSearchWBS.val(), function(data) {
+                $('div.location').empty();
+                var projects = JSON.parse(data);
+                for(var i = 0; i < projects.length; i++) {
+                    locationadd.append('<a href="./show.php?ProjWBS='
+                    + projects[i].ProjWBS + '&ProjName=' + projects[i].ProjName + '"><button class="btn-location">'
+                    +projects[i].ProjName + '<br>(' + projects[i].ProjWBS.substring('project_')+')</button></a>');
+                }
+            });
 		});
 
 		/* จบส่วนที่เพิ่มเติม */

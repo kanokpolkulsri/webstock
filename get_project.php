@@ -1,7 +1,21 @@
 <?php
     $has_page = false;
     include 'check_connection.php';
-    $sql = 'SELECT * FROM project_map ORDER BY LastUpdate DESC';
+    if((!isset($_GET['ProjName']) && !isset($_GET['ProjWBS'])) || ($_GET['ProjName'] == '' && $_GET['ProjWBS'] == '')) {
+        $sql = 'SELECT * FROM project_map ORDER BY LastUpdate DESC';
+    } else {
+        $sql = 'SELECT * FROM project_map WHERE';
+        if($_GET['ProjName'] != '') {
+            $sql .= ' ProjName LIKE "' . $_GET['ProjName'] . '%"';
+        }
+        if($_GET['ProjWBS'] != '') {
+            if($_GET['ProjName'] != '') {
+                $sql .= ' AND';
+            }
+            $sql .= ' ProjWBS LIKE "' . $_GET['ProjWBS'] . '%"';
+        }
+        $sql .= ' ORDER BY LastUpdate DESC';
+    }
     $result = $conn->query($sql);
 
     // $result = $conn->query("SHOW DATABASES;");
@@ -14,6 +28,6 @@
         $output .= ']';
         echo $output;
     } else {
-        echo "0";
+        echo "[]";
     }
 ?>

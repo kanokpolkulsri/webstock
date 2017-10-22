@@ -9,7 +9,7 @@
             die();
         }
         $_SESSION['last_activity'] = time();
-        define('DB_SERVER', 'localhost');
+        define('DB_SERVER', 'tmdseo4.com');
         define('DB_USERNAME', $_SESSION['db_username']);
         define('DB_PASSWORD', $_SESSION['db_password']);
         // define('DB_USERNAME', 'user1');

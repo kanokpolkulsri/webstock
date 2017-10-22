@@ -21,7 +21,7 @@ if(isset($_GET['q'])) {
     } else if($table == 'tb_rec' && ($q[0] != '' || $q[1] != '' || $q[2] != '')) {
         $sql .= ' WHERE';
         if($q[0] != '') {
-            $sql .= ' RecDate = "'.$q[0].'"';
+            $sql .= ' RecDate LIKE "%'.$q[0].'%"';
         }
         if($q[1] != '') {
             if($q[0] != '') {
@@ -39,7 +39,7 @@ if(isset($_GET['q'])) {
     } else if($table == 'tb_out' && ($q[0] != '' || $q[1] != '' || $q[2] != '')) {
         $sql .= ' WHERE';
         if($q[0] != '') {
-            $sql .= ' OutDate = "'.$q[0].'"';
+            $sql .= ' OutDate LIKE "%'.$q[0].'%"';
         }
         if($q[1] != '') {
             if($q[0] != '') {

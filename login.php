@@ -4,7 +4,7 @@
 	error_reporting(E_ERROR | E_PARSE);
 	date_default_timezone_set("Asia/Bangkok");
 	header('Content-Type: text/html; charset=utf-8');
-	define('DB_SERVER', 'localhost');
+	define('DB_SERVER', 'tmdseo4.com');
 	define('DB_USERNAME', 'login');
 	define('DB_PASSWORD', LOGIN_PASSWORD);
 	define('DB_DATABASE', 'projects');
